@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "gera_codigo.h": "c",
+        "stdio.h": "c"
+    }
+}

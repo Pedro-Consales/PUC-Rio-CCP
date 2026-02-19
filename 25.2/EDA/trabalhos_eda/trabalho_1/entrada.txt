@@ -1,0 +1,17 @@
+c-1-verde
+c-2-vermelha
+c-3-verde
+c-4-amarela
+c-5-vermelha 
+c-6-vermelha
+c-7-verde
+c-8-vermelha
+a-5-vermelha
+a-4-amarela
+c-9-verde
+c-10-amarela
+c-11-vermelha
+c-12-amarela
+a-2-vermelha
+a-6-vermelha
+a-3-verde

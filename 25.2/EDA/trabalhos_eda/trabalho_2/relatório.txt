@@ -1,0 +1,283 @@
+RELATÓRIO – TRABALHO 2 – GRAFOS (INF1010)
+
+---
+
+1. REPRESENTAÇÃO DO GRAFO
+
+---
+
+1.1 Matriz de Adjacências
+
+O grafo tem 10 vértices numerados de 1 a 10. A matriz de adjacências A é uma matriz 10×10 em que A[i][j] contém o peso da aresta entre i e j. Se não há aresta direta, o valor é 0. Como o grafo é não-dirigido, a matriz é simétrica.
+
+Matriz (linhas e colunas na ordem 1..10):
+
+```
+  1  2  3  4  5  6  7  8  9 10
+```
+
+1  |  0  0  3  0  4  0  0  3  3  1
+2  |  0  0  4  0  0  0  0  0  0  1
+3  |  3  4  0  1  0  1  0  2  4  4
+4  |  0  0  1  0  2  0  2  0  0  0
+5  |  4  0  0  2  0  0  2  4  0  0
+6  |  0  0  1  0  0  0  3  0  0  0
+7  |  0  0  0  2  2  3  0  0  0  0
+8  |  3  0  2  0  4  0  0  0  1  2
+9  |  3  0  4  0  0  0  0  1  0  4
+10 |  1  1  4  0  0  0  0  2  4  0
+
+1.2 Lista de Adjacências
+
+A lista de adjacências representa o grafo como um vetor de tamanho 10, em que cada posição i contém uma lista encadeada com os vértices vizinhos de i e os respectivos pesos.
+
+Saída gerada pela função imprime_grafo(grafo, 10):
+
+Vetor (Vertice = 1):  vizinhos -> 9(peso=3) -> 5(peso=4) -> 8(peso=3) -> 10(peso=1) -> 3(peso=3) -> NULL
+Vetor (Vertice = 2):  vizinhos -> 10(peso=1) -> 3(peso=4) -> NULL
+Vetor (Vertice = 3):  vizinhos -> 1(peso=3) -> 9(peso=4) -> 6(peso=1) -> 4(peso=1) -> 8(peso=2) -> 10(peso=4) -> 2(peso=4) -> NULL
+Vetor (Vertice = 4):  vizinhos -> 7(peso=2) -> 5(peso=2) -> 3(peso=1) -> NULL
+Vetor (Vertice = 5):  vizinhos -> 7(peso=2) -> 4(peso=2) -> 1(peso=4) -> 8(peso=4) -> NULL
+Vetor (Vertice = 6):  vizinhos -> 7(peso=3) -> 3(peso=1) -> NULL
+Vetor (Vertice = 7):  vizinhos -> 5(peso=2) -> 4(peso=2) -> 6(peso=3) -> NULL
+Vetor (Vertice = 8):  vizinhos -> 5(peso=4) -> 9(peso=1) -> 1(peso=3) -> 3(peso=2) -> 10(peso=2) -> NULL
+Vetor (Vertice = 9):  vizinhos -> 8(peso=1) -> 10(peso=4) -> 3(peso=4) -> 1(peso=3) -> NULL
+Vetor (Vertice = 10): vizinhos -> 8(peso=2) -> 9(peso=4) -> 1(peso=1) -> 3(peso=4) -> 2(peso=1) -> NULL
+
+---
+
+2. BUSCA EM LARGURA (BFS)
+
+---
+
+2.1 Objetivo
+
+O percurso em largura (BFS) visita o grafo em camadas: primeiro o vértice inicial, depois todos os vértices a 1 aresta de distância, depois todos os vértices a 2 arestas de distância e assim por diante. Os pesos das arestas são ignorados. Neste trabalho, o percurso começa no vértice 3.
+
+2.2 Descrição do Algoritmo
+
+BFS(G, origem):
+marcar origem como visitado
+enfileirar origem
+enquanto a fila não estiver vazia:
+u = desenfileira
+para cada vizinho v de u:
+se v não estiver visitado:
+marcar v
+enfileirar v
+
+2.3 Execução Passo a Passo a partir do vértice 3
+
+A tabela abaixo mostra, a cada passo, qual vértice foi removido da fila, o conteúdo da fila antes/depois da remoção e o conjunto de vértices já visitados naquele momento.
+
+Formato:
+Passo | Vértice removido | Fila antes | Fila depois | Visitados
+
+Passo 1:
+Vértice removido: 3
+Fila antes:  [3]
+Fila depois: [2, 10, 8, 4, 6, 9, 1]
+Visitados:   {1, 2, 3, 4, 6, 8, 9, 10}
+
+Passo 2:
+Vértice removido: 2
+Fila antes:  [2, 10, 8, 4, 6, 9, 1]
+Fila depois: [10, 8, 4, 6, 9, 1]
+Visitados:   {1, 2, 3, 4, 6, 8, 9, 10}
+
+Passo 3:
+Vértice removido: 10
+Fila antes:  [10, 8, 4, 6, 9, 1]
+Fila depois: [8, 4, 6, 9, 1]
+Visitados:   {1, 2, 3, 4, 6, 8, 9, 10}
+
+Passo 4:
+Vértice removido: 8
+Fila antes:  [8, 4, 6, 9, 1]
+Fila depois: [4, 6, 9, 1, 5]
+Visitados:   {1, 2, 3, 4, 5, 6, 8, 9, 10}
+
+Passo 5:
+Vértice removido: 4
+Fila antes:  [4, 6, 9, 1, 5]
+Fila depois: [6, 9, 1, 5, 7]
+Visitados:   {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+Passo 6:
+Vértice removido: 6
+Fila antes:  [6, 9, 1, 5, 7]
+Fila depois: [9, 1, 5, 7]
+Visitados:   {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+Passo 7:
+Vértice removido: 9
+Fila antes:  [9, 1, 5, 7]
+Fila depois: [1, 5, 7]
+Visitados:   {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+Passo 8:
+Vértice removido: 1
+Fila antes:  [1, 5, 7]
+Fila depois: [5, 7]
+Visitados:   {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+Passo 9:
+Vértice removido: 5
+Fila antes:  [5, 7]
+Fila depois: [7]
+Visitados:   {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+Passo 10:
+Vértice removido: 7
+Fila antes:  [7]
+Fila depois: []
+Visitados:   {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+Ordem final de visita da BFS a partir do vértice 3:
+3 → 2 → 10 → 8 → 4 → 6 → 9 → 1 → 5 → 7
+
+---
+
+3. MENOR CAMINHO – ALGORITMO DE DIJKSTRA
+
+---
+
+3.1 Objetivo
+
+O algoritmo de Dijkstra calcula o menor custo (distância) dos caminhos que partem de um vértice origem até todos os demais vértices de um grafo com pesos positivos. Neste trabalho, a origem é o vértice 3.
+
+3.2 Descrição do Algoritmo
+
+Dijkstra(G, origem):
+para cada vértice v:
+dist[v] = ∞
+dist[origem] = 0
+marcar todos os vértices como não usados
+repetir n vezes:
+escolher u não usado com menor dist[u]
+marcar u como usado
+para cada vizinho v de u com peso w:
+se dist[u] + w < dist[v]:
+dist[v] = dist[u] + w
+
+3.3 Execução Passo a Passo a partir do vértice 3
+
+Representação: dist[1..10] após cada passo. O símbolo ∞ representa "infinito" (vértice ainda inalcançável naquele momento).
+
+Estado inicial:
+dist = [∞, ∞, 0, ∞, ∞, ∞, ∞, ∞, ∞, ∞]
+1  2  3  4  5  6  7  8  9 10
+
+Passo 1:
+Vértice escolhido: u = 3 (menor distância = 0)
+Relaxamentos:
+3 → 2 (peso 4): dist[2] passa de ∞ para 4
+3 → 10 (peso 4): dist[10] passa de ∞ para 4
+3 → 8 (peso 2): dist[8] passa de ∞ para 2
+3 → 4 (peso 1): dist[4] passa de ∞ para 1
+3 → 6 (peso 1): dist[6] passa de ∞ para 1
+3 → 9 (peso 4): dist[9] passa de ∞ para 4
+3 → 1 (peso 3): dist[1] passa de ∞ para 3
+
+dist após o passo 1:
+[3, 4, 0, 1, ∞, 1, ∞, 2, 4, 4]
+1  2  3  4  5  6  7  8  9 10
+
+Passo 2:
+Vértice escolhido: u = 4 (menor distância entre não usados = 1)
+Relaxamentos:
+4 → 5 (peso 2): dist[5] passa de ∞ para 3
+4 → 7 (peso 2): dist[7] passa de ∞ para 3
+
+dist após o passo 2:
+[3, 4, 0, 1, 3, 1, 3, 2, 4, 4]
+
+Passo 3:
+Vértice escolhido: u = 6 (distância = 1)
+Relaxamentos: nenhum (todos os caminhos via 6 são mais caros que os já existentes).
+
+dist após o passo 3:
+[3, 4, 0, 1, 3, 1, 3, 2, 4, 4]
+
+Passo 4:
+Vértice escolhido: u = 8 (distância = 2)
+Relaxamentos:
+8 → 9 (peso 1): dist[9] passa de 4 para 3
+
+dist após o passo 4:
+[3, 4, 0, 1, 3, 1, 3, 2, 3, 4]
+
+Passo 5:
+Vértice escolhido: u = 1 (distância = 3)
+Relaxamentos: nenhum (todos os novos caminhos são maiores ou iguais aos valores atuais).
+
+dist após o passo 5:
+[3, 4, 0, 1, 3, 1, 3, 2, 3, 4]
+
+Passo 6:
+Vértice escolhido: u = 5 (distância = 3)
+Relaxamentos: nenhum.
+
+dist após o passo 6:
+[3, 4, 0, 1, 3, 1, 3, 2, 3, 4]
+
+Passo 7:
+Vértice escolhido: u = 7 (distância = 3)
+Relaxamentos: nenhum.
+
+dist após o passo 7:
+[3, 4, 0, 1, 3, 1, 3, 2, 3, 4]
+
+Passo 8:
+Vértice escolhido: u = 9 (distância = 3)
+Relaxamentos: nenhum.
+
+dist após o passo 8:
+[3, 4, 0, 1, 3, 1, 3, 2, 3, 4]
+
+Passo 9:
+Vértice escolhido: u = 2 (distância = 4)
+Relaxamentos: nenhum.
+
+dist após o passo 9:
+[3, 4, 0, 1, 3, 1, 3, 2, 3, 4]
+
+Passo 10:
+Vértice escolhido: u = 10 (distância = 4)
+Relaxamentos: nenhum.
+
+dist após o passo 10 (vetor final de distâncias):
+[3, 4, 0, 1, 3, 1, 3, 2, 3, 4]
+
+Interpretando o vetor final:
+3 → 1 = 3
+3 → 2 = 4
+3 → 3 = 0
+3 → 4 = 1
+3 → 5 = 3
+3 → 6 = 1
+3 → 7 = 3
+3 → 8 = 2
+3 → 9 = 3
+3 → 10 = 4
+
+Exemplos de caminhos mínimos explícitos:
+Caminho de 3 até 4: 3 → 4, custo 1.
+Caminho de 3 até 6: 3 → 6, custo 1.
+Caminho de 3 até 5: 3 → 4 → 5, custo 1 + 2 = 3.
+Caminho de 3 até 7: 3 → 4 → 7, custo 1 + 2 = 3.
+Caminho de 3 até 8: 3 → 8, custo 2.
+
+---
+
+4. CONCLUSÃO
+
+---
+
+O grafo ponderado fornecido no enunciado foi representado corretamente tanto pela matriz de adjacências quanto pela lista de adjacências, usando uma estrutura de listas encadeadas indexadas por vértice.
+
+O algoritmo de busca em largura (BFS) foi implementado utilizando um vetor de marcação de visitados e uma fila para armazenar os vértices a serem processados. A execução iniciando no vértice 3 visitou todos os vértices do grafo, e a tabela apresentada mostra o conteúdo da fila e o conjunto de vértices visitados a cada passo.
+
+O algoritmo de Dijkstra foi implementado em sua versão O(n²), escolhendo a cada passo o vértice não processado com menor distância conhecida e relaxando as arestas saindo desse vértice. As distâncias finais obtidas a partir do vértice 3 estão coerentes com os pesos do grafo, e foram apresentados exemplos de caminhos mínimos (incluindo as arestas percorridas e o custo acumulado).
+
+Com isso, o trabalho atende às exigências das letras (a), (b) e (c) do enunciado: representação do grafo, percurso em amplitude a partir do nó 3 e cálculo dos menores percursos entre o nó 3 e os demais vértices do grafo, com explicação detalhada do funcionamento dos algoritmos e dos resultados obtidos.
