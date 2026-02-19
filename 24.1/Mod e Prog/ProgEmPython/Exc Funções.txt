@@ -1,0 +1,106 @@
+EXERCÍCIOS FUNÇÕES 
+
+---------------------------------------
+
+2. VALOR ABSOLUTO 
+
+número = -10
+
+def valorAbsoluto(número):
+    return abs(número )
+
+print(valorAbsoluto(número))
+
+---------------------------------------
+
+
+3. FAHRENHEIT PARA CELCIUS 
+
+G_farenheit=86
+
+
+def f2c (G_farenheit):
+    return (G_farenheit - 32)*5/9
+
+print(f2c(G_farenheit))
+
+--------------------------------------
+
+4.  Escreva uma função chamada dec2hex que leia um número inteiro em decimal e exiba o seu valor em hexadecimal. Dica: os
+formatos %x e %X podem ser utilizados para representar um número em hexadecimal.
+
+--------------------------------------
+
+5. Calcula Percetn 
+
+def calculaPercent(numero,percent):
+    return (numero)*(percent/100)
+                     
+print(calculaPercent(120,10))
+
+-------------------------------------
+
+6. Notas Matérias 
+
+def calculaPercent(numero,percent):
+    return (numero)*(percent/100)
+
+
+def NotasAlunos(NotaFísica,NotaIngles,NotaMat,NotaPort):
+    return calculaPercent(NotaFísica,40) + calculaPercent(NotaIngles,20) + calculaPercent(NotaMat,15) + calculaPercent(NotaPort,25)
+
+print(NotasAlunos(9, 8, 6, 7))
+
+
+--------------------------------------
+
+7. Preço Básico
+
+
+def calculaPercent(numero,percent):
+    return (numero)*(percent/100)
+
+
+def ValorSerPago(codigo):
+    preçoBasico = codigo//100 * 15.00 + 2314 %100
+    desconto = codigo %100
+    preço = preçoBasico - calculaPercent(preçoBasico, desconto)
+    return preço
+
+print(ValorSerPago(2314))
+
+
+---------------------------------------
+
+8. fulano, meu nome é.....
+
+ def NomeIdade(nome,idade):
+    return nome +', meu nome é Python e eu tenho ' + str(idade *2) + ' anos'
+
+print(NomeIdade('Pedro',18))
+
+
+----------------------------------------
+
+
+9. Senha de um aluno
+
+
+def somaDigitos(numero):
+    n1 = numero // 10
+    n2 = numero % 10
+    soma = n1 + n2
+    return soma 
+
+
+def gerarSenha(dia,mes,ano):
+    dia = somaDigitos(dia)
+    mes = somaDigitos(mes)
+    ano = somaDigitos(ano%100)
+    return str(dia)+str(mes)+str(ano)
+
+
+print(gerarSenha(27,3,1999))
+
+--------------------------------------------
+

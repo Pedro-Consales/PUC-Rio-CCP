@@ -1,0 +1,11 @@
+10
+Catarina Claes: 100 5.1 6.2
+Chika Fujiwara: 101 10.0 9.4
+Clark Kent: 102 10.0 10.0
+Giorno Giovanna: 103 9.8 8.0
+Gwen Stacy: 104 9.4 10.0
+Miles Morales: 105 0.0 10.0
+Saiki Kusuo: 106 7.0 7.0
+Sakura Haruno: 107 9.9 9.4
+Son Goku: 108 4.2 3.4
+Vanellope von Schweetz: 109 7.0 6.6

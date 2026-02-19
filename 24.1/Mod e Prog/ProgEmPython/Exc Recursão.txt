@@ -1,0 +1,583 @@
+1) '''Escreva uma função recursiva que receba um número inteiro como parâmetro e retorne a quantidade de vezes que os 
+algarismos 3 e 4 aparecem no número. Exemplo: se o número for 239424, a função retornará 3.'''
+
+
+
+def contaNum(n):
+    digito = n%10 
+    if n == 0:
+        return 0
+    if digito == 4 or digito == 3:
+        return 1 + contaNum(n//10)
+    else: 
+        return contaNum(n//10)
+    
+print(contaNum(239424))
+
+
+========================================================================================
+
+
+2) '''Escreva uma função recursiva que receba um número e retorne-o convertido para o formato string. (o mesmo que é feito 
+pela função str())'''
+
+def RetornStr(n):
+    if n < 10:
+        return str(n)
+    return RetornStr(n//10) + str(n%10) 
+
+print(RetornStr(123))
+
+
+
+-------------------------------------------------------------------------------------------------
+
+3) '''Escreva uma função recursiva que receba dois números inteiros, com mesma quantidade de algarismos, e retorne True, se 
+todo algarismo que ocupe determinada ordem no 1º número for menor do que o algarismo que ocupe a ordem 
+correspondente no 2º número, ou False, caso contrário. 
+Exemplo 
+algMenores( 1234 , 2456 ) --> True 
+algMenores( 1234 , 2436 ) --> False'''
+
+
+def Menorq(n1,n2):
+    if n1 < 10:
+        return n1 < n2
+    if n1%10 >= n2%10:
+        return False
+    else: 
+        return Menorq(n1//10,n2//10)
+    
+print(Menorq(1234,2436))
+
+--------------------------------------------------------------------------------------------------
+
+4) '''Escreva uma função recursiva que receba um número inteiro positivo como parâmetro e imprima-o verticalmente, ou seja, 
+um dígito por linha. 
+Exemplo 
+Se o número recebido for 198 a função irá exibir 
+1 
+9 
+8 '''
+
+
+def exibaVert(n):
+    if n < 10:
+        print(n)
+        return 
+    exibaVert(n//10)
+    print(n%10)
+
+exibaVert(198)
+
+--------------------------------------------------------------------------------------------------
+
+
+5) '''Altere a função do exercício anterior para que o número seja exibido de forma invertida. 
+Exemplo 
+Se o número recebido for 198 a função irá exibir 
+8 
+9 
+1'''
+
+
+def exibaVert(n):
+    if n < 10:
+        print(n)
+        return
+    print(n%10) 
+    exibaVert(n//10)
+
+exibaVert(198)
+
+
+----------------------------------------------------------------------------------------------------
+6)
+
+'''EEscreva uma função recursiva que receba um número inteiro e retorne um número que contenha os mesmos algarismos do 
+número recebido como parâmetro, mas em ordem inversa. 
+Exemplo 
+inverte(1234 ) --> 4321  '''
+
+def invNum(num, aux):
+    if num == 0:
+        return aux
+    aux = aux*10 + num%10
+    return invNum(num//10,aux)
+
+print(invNum(1234,0))
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+7)
+
+
+
+
+-----------------------------------------------------------------------------------------------------
+
+8) '''Escreva uma função recursiva que receba um número inteiro (n) e um algarismo (a), e "elimine" o algarismo a do número n.  
+Exemplos 
+• Número 12342 e algarismo 2 --> a função retornará 134 
+• Número 12342 e algarismo 5 --> a função retornará 12342 
+• Número 2 e algarismo 2 --> a função retornará 0 '''
+
+
+def eliminaAlg(n,a):
+    if n < 10:
+        if n == a:
+            return 0
+        return n 
+    if n%10 == a:
+        return eliminaAlg(n//10,a) 
+    else:
+        return eliminaAlg(n//10,a) * 10 + n%10
+
+print(eliminaAlg(12342,5))
+
+
+------------------------------------------------------------------------------------------------------
+
+9)
+
+
+'''Escreva uma função recursiva que seja capaz de intercalar os algarismos de dois números, retornando uma string com os 
+algarismos intercalados. Quando os algarismos de um número terminarem, os demais algarismos do número que não 
+finalizou devem ocupar as primeiras posições da string resultante. 
+Exemplo: 
+n1: 236 
+n2: 13458 
+string resultante: '13243568'  '''
+
+
+def incNum(n1,n2):
+    if n1 < 10 or n2 < 10:
+        return str(n2) + str(n1)
+    return incNum(n1//10,n2//10) + str(n1%10) + str(n2%10) 
+
+print(incNum(236,13458))
+
+
+
+------------------------------------------------------------------------------------------------------
+
+10) 
+
+'''Escreva uma função recursiva que gere um número cujos algarismos são os sucessores dos algarismos de um número (n) 
+passado como parâmetro. (Observação: 0 é o sucessor de 9). 
+Exemplo: 
+n: 2984 
+nº gerado: 3095 '''
+
+def Sucessores(n):
+    if n < 10:
+        if n == 9:
+            return ((n + 1)%10)
+        return n + 1 
+    if n%10 == 9:
+        return Sucessores(n//10)*10 
+    else:
+        return Sucessores(n//10)*10 + ((n%10)+1)
+
+
+print(Sucessores(2984))
+
+
+
+---------------------------------------------------------------------------------------------------
+
+11) 
+
+
+'''Escreva uma função recursiva que receba uma string e exiba cada palavra em uma nova linha. Considere que as palavras 
+estão separadas por um espaço ou uma vírgula.'''
+
+def SeparaString(s):
+    if len(s) == 1:
+        print(s,end="")
+        return 
+    if ' ' in s[0] or ',' in s[0]:
+        print('')
+    else: 
+        print(s[0],end = '')
+    SeparaString(s[1:])        
+
+
+SeparaString('MeuDeus')
+
+
+---------------------------------------------------------------------------------------------------
+
+12)
+
+''' Escreva uma função recursiva que recebe uma string e retorne o número de palavras existentes nessa string. Considere que 
+as palavras estão separadas por um espaço ou por uma vírgula. '''
+
+def QntdPalavras(s):
+    if len(s) == 1:
+        return 1
+    if ' ' == s[0] or ',' == s[0]:
+        return QntdPalavras(s[1:]) + 1
+    else: 
+        return QntdPalavras(s[1:])
+
+
+print(QntdPalavras('Meu Deus do Ceu'))
+
+--------------------------------------------------------------------------------------------------
+
+
+13) 
+'''Escreva uma função recursiva que recebe uma string (s) e um caractere (a), e retorne True, se a está presente em s, ou False, 
+caso contrário. '''
+
+def VerfCarac(s,c):
+    if len(s) == 1:
+        if s == c:
+            return True
+        else: 
+            return False
+    if s[0] == c:
+        return True
+    return VerfCarac(s[1:],c)
+    
+print(VerfCarac('abner','a'))
+
+
+------------------------------------------------------------------------------------------------
+
+
+14)
+'''Escreva uma função recursiva que receba um caractere (a) e uma string (s) como parâmetros, e retorne a quantidade de 
+vezes que a ocorre em s.'''
+
+def RetornaQntd(a,s):
+    if len(a) == 1: 
+        if a == s:
+            return 1
+    if a[0] == s:
+        return RetornaQntd(a[1:],s) + 1
+    else:
+        return RetornaQntd(a[1:],s)
+
+print(RetornaQntd('banana','a'))
+
+------------------------------------------------------------------------------------------------
+
+
+15) 
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+16) 
+
+'''Escreva uma função recursiva que receba uma string como parâmetro e a exiba conforme o exemplo abaixo. 
+Exemplo: 
+String recebida: 'Cana' 
+Strings exibidas 
+Cana 
+ana 
+na 
+a '''
+
+
+def SeparaString(s):
+    if len(s) == 1:
+        print(s)
+        return
+    if len(s) > 1:
+        print(s)
+        return SeparaString(s[1:])
+
+SeparaString('Cana')
+
+
+
+----------------------------------------------------------------------------------------------------------
+
+17)  
+
+''' Escreva uma função recursiva que receba uma string como parâmetro e a exiba conforme o exemplo abaixo. 
+Exemplo: 
+String recebida: 'Cana' 
+Strings exibidas 
+a 
+na 
+ana 
+Cana'''
+
+
+def SeparaString(s):
+    if len(s) == 1:
+        print(s)
+        return
+    SeparaString(s[1:])
+    print(s)
+
+-------------------------------------------------------------------------------------------------------------
+
+
+18) ''' Escreva uma função recursiva que receba uma string (s) e retorne outra string contendo os caracteres de s duplicados. 
+Exemplo: 
+Parâmetro recebido: 'manobra' 
+String retornada: 'mmaannoobbrraa'  '''
+
+
+def rec(s):
+    if len(s) < 2:
+        return s*2
+    return s[0]*2 + rec(s[1:])
+
+print(rec('manobra'))
+
+
+------------------------------------------------------------------------------------------------------------
+
+
+19)
+
+ '''  Escreva uma função recursiva que receba uma string (s) e retorne outra string que contenha os mesmos caracteres de s, além 
+de duplicatas dos algarismos decimais. 
+Exemplos: 
+Parâmetro recebido: 'Prog1' 
+String retornada: 'Prog11' 
+Parâmetro recebido: 'x123p' 
+String retornada: 'x112233p'  '''
+
+def rec(s):
+    if len(s) < 2:
+        if s in '0123456789':
+            return s*2
+    elif s[0] in '0123456789':
+        return s[0]*2 + rec(s[1:])
+    return s[0] + rec(s[1:])
+
+print(rec('Prog11'))
+
+
+--------------------------------------------------------------------------------------------------------------
+
+20) 
+
+'''  Escreva uma função recursiva que receba uma string (s) e retorne outra string que contenha pares de caracteres de s 
+invertidos (SiSj==> SjSi, se i for par e j=i+1). 
+Exemplo: 
+Parâmetro recebido: 'abcde' 
+String retornada: 'badce'  '''
+
+def rec(s):
+    if len(s) < 2:
+        return s
+    else:
+        return s[1] + s[0] + rec(s[2:])
+
+
+print(rec('abcde'))
+
+
+----------------------------------------------------------------------------------------------------------------
+
+21) 
+
+''' Escreva uma função recursiva que receba duas strings (s1 e s2) como parâmetros e retorne True, caso s1=s2, ou False, caso 
+contrário. '''
+
+def rec(s1,s2):
+    if len(s1) != len(s2):
+        return False
+    elif len(s1) < 2 and s1[0] == s2[0]:
+        return True
+    elif s1[0] == s2[0]:
+        return True and rec(s1[1:],s2[1:])
+    else:
+        return False
+
+print(rec('Abner','Abner'))
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+22) 
+
+''' Escreva uma função recursiva que receba duas strings (s1 e s2) como parâmetros e retorne True, caso s1 seja prefixo de s2, 
+ou False, caso contrário. 
+Exemplos: 
+Parâmetros recebidos: ('Ana', 'Analógico') 
+Retorno: True 
+Parâmetros recebidos: ('Ana', 'Anão') 
+Retorno: True '''
+
+
+def rec(s1,s2):
+    if s1 == '':
+        return True
+    if s1[0:len(s1)] == s2[0:len(s1)]:
+        return True and rec(s1[1:],s2[1:])
+    else:
+        return False
+    
+
+print(rec('Ana','Analógico'))
+        
+
+
+----------------------------------------------------------------------------------------------------------------
+
+23)
+
+'''Escreva uma função recursiva que receba duas strings (s1 e s2) como parâmetros e retorne uma string que corresponda à 
+intercalação de s1 com s2. Caso uma das strings tenha mais caracteres do que a outra, os caracteres restantes da maior string 
+devem ser concatenados com a string resultante da intercalação. 
+Exemplos: 
+Parâmetros recebidos: ('abc', '123') 
+Retorno: 'a1b2c3' 
+Parâmetros recebidos: ('abc', '123456') 
+Retorno: 'a1b2c3456' '''
+
+
+def rec(s1,s2):
+    if len(s1) < 2:
+        return s1 + s2[0:]
+    else:
+        return s1[0] + s2[0] + rec(s1[1:],s2[1:])
+
+
+
+print(rec('abc','123'))
+
+
+--------------------------------------------------------------------------------------------------------------
+
+24) 
+
+''' Escreva uma função recursiva que receba uma string como parâmetro e retorne a string invertida. 
+Exemplo: 
+Parâmetro recebido: 'Teste' 
+String retornada: 'etseT'  '''
+
+
+def rec(s):
+    if len(s) < 2:
+        return s
+    else:
+        return rec(s[1:]) + s[0] 
+
+
+print(rec('Teste'))
+
+
+--------------------------------------------------------------------------------------------------------------
+
+25)
+
+'''Escreva uma função recursiva que receba duas strings como parâmetros e retorne True, se uma delas é o reverso da outra, 
+ou False, caso contrário. 
+Exemplos: 
+'roma' é reverso de 'amor' 
+'livres' é reverso de 'servil'''
+
+def rec(s1,s2):
+    if len(s1) != len(s2):
+        return False
+    if len(s1) < 2:
+        return s1 == s2
+    if s1[0] == s2[-1]:
+        return rec(s1[1:],s2[0:-1])
+    else:
+        return False
+    
+print(rec('amoa','roma'))
+
+---------------------------------------------------------------------------------------------------------------
+
+26)
+
+''' Escreva uma função recursiva que receba duas strings (s1 e s2) como parâmetros e retorne a string 
+• 'SIM', caso s1 = s2 
+• 'SEM MAIOR', caso s1 != s2 e len(s1) = len(s2) 
+• A string de maior comprimento, caso len(s1) != len(s2) 
+'''
+
+def rec(s1,s2):
+    Maior = ''
+    if s1 == s2:
+        return 'Sim'
+    if s1 != s2 and len(s1) == len(s2):
+        return 'Sem Maior'
+    if len(s1) != len(s2):
+        if len(s1) > len(s2):
+            Maior = s1
+        elif len(s2) > len(s1):
+            Maior = s2
+        return Maior
+    
+print(rec('Jabiticaba','Uva'))
+print(rec('Uva','Jao'))
+print(rec('Uva','Uva'))
+
+
+---------------------------------------------------------------------------------------------------------------
+
+27)
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------
+
+29)
+
+''' Escreva uma função recursiva, chamada dois_iguais(), que receba uma string como parâmetro e retorne quantos pares de 
+caracteres iguais existem nessa string. Um par de caracteres iguais é um par SiSj tal que Si=Sj, i é um número par e j=i+1. 
+Exemplo: 
+Parâmetro recebido: 'aajbb2cceccd' 
+Valor retornado: 2 '''
+
+
+def dois_iguais(s):
+    if len(s) < 2:
+        return 0
+    if s[0] == s[1]:
+        return 1 + dois_iguais(s[2:])
+    else:
+        return dois_iguais(s[2:])
+    
+
+print(dois_iguais('aajbb2cceccd'))
+
+
+------------------------------------------------------------------------------------------------------------
+
+31)
+
+''' Escreva uma função recursiva que receba como parâmetros uma string (s) e um caractere (a), e retorne o índice da 1ª 
+ocorrência de a em s. Caso não exista ocorrência alguma de a em s, a função deve retornar -1. 
+Exemplos: 
+Parâmetro recebido: ('Ana Maria Martins', 'M') 
+Índice retornado: 4
+Parâmetro recebido: ('Ana Maria Martins', 'm') 
+Índice retornado: -1'''
+
+
+def rec(s,a):
+    if s == '':
+        return -1
+    if a == s[0]:
+        return 0
+    else:
+        varivael = rec(s[1:],a)
+        if varivael == -1:
+            return -1
+        return rec(s[1:],a) + 1
+    
+print(rec('Ana Maria Martins','m'))
+

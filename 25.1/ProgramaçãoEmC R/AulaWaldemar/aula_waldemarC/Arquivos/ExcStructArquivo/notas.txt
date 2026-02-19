@@ -1,0 +1,5 @@
+Leonardo da Vinci: 8.0 7.6 2.3
+Isaac Newton: 9.5 8.4 7.2
+Marie Curie: 7.8 9.1 8.5
+Ada Lovelace: 6.9 7.0 8.0
+Albert Einstein: 9.0 9.5 9.8

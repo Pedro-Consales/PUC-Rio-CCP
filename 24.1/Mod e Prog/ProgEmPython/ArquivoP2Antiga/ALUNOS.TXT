@@ -1,0 +1,5 @@
+João:MAT101:9:5.5
+Maria:HIS102:7:6.5
+Pedro:BIO103:13:8.0
+Ana:MAT101:11:4.5
+Carlos:BIO103:10:7.0

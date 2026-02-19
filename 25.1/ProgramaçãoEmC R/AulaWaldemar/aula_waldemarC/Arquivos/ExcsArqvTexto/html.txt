@@ -1,0 +1,10 @@
+<html>
+<head>
+<title>Minha Pagina Web</title>
+</head>
+<body>
+Meu Texto<br>
+Minha Imagem <img src="img.jpg"><br>
+<a href="pag1.html">Meu Link</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+.profile-picture{
+    width: 36px;
+    border-radius: 50%;
+}
+
+.tooltip-conatiner{
+    display: flex;
+    position: absolute;
+
+    align-items: center;
+
+    z-index: 1; /*para o video preview ficar na frente do background*/;
+    
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+
+    border-radius: 4px;
+
+    bottom: -15px;
+    right: 0px;
+    left: -25px;
+    height: 60px;
+
+    font-size: 12px;
+    
+
+    transition: opacity 0.15s;
+
+    pointer-events: none; /*desabilita o evento de mouse em cima do tooltip*/
+
+    white-space: nowrap; /*não deixa o texto quebrar*/
+}
+
+
+.tooltip-conatiner img{
+
+    width: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.tooltip-text-name{
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+.tooltip-text-subscribers{
+    font-size: 12px;
+    color: rgb(96, 96, 96);
+
+}

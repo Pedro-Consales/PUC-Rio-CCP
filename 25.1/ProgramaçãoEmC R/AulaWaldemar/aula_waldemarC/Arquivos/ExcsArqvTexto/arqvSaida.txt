@@ -1,0 +1,7 @@
+Ola, {pessoa}
+Eu me chamo, Pedro
+Tenho 19 anos e estudo na PUC
+
+Trabalho no Instituto ECOA-PUC-Rio
+Um Estagio voltado a inovacao tecnologica
+Em colaboracao com a Petrobras

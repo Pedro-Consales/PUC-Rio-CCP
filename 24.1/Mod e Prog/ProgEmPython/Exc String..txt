@@ -1,0 +1,214 @@
+'''1) 
+
+Escreva um programa que leia do teclado o nome de uma pessoa e exiba a quantidade de caracteres do nome. Dica: 
+help(len)  '''
+
+nome = input('Digite o seu nome:')
+tamnanhoNome = len(nome)
+print(tamnanhoNome)
+
+---------------------------------------------------------------------------------------
+
+2)
+
+''' Escreva um programa que leia do teclado uma string e o tamanho de uma linha de texto e exiba a string centralizada na 
+linha. Não se preocupe se o tamanho da string resultante for uma unidade menor do que o tamanho da linha. Exemplo: 
+Entrada 
+'Bem no meio' 
+20 
+
+Saída 
+'    
+Bem no meio    
+'''
+
+string = input('Digite a sua string:')
+tamanho = int(input('Digite o tamnho das dos espaços nas extremidades da string'))
+tamanhoFinal = tamanho//2
+
+resultado = tamanhoFinal*'*' + string + tamanhoFinal*'*'
+print(resultado)
+
+
+
+-----------------------------------------------------------------------------------------------
+
+3)
+
+
+'''Escreva um programa que leia do teclado duas strings com no mínimo 15 caracteres cada e exiba a concatenação da 
+primeira, sem os cinco primeiros caracteres, com a segunda, sem os últimos onze caracteres. Exemplo: 
+Entrada 
+'12345DI/PUC-Rio - ' 
+'Brasil12345678901' 
+Saída 
+'DI/PUC-Rio - Brasil'''
+
+
+string1 = input('Digite a sua primeira string max 15 caracteres:')
+string2 = input('Digite a sua segunda string max 15 caracteres:')
+
+conca = string1[5:] + string2[0:6]
+
+print(conca) 
+
+
+------------------------------------------------------------------------------------------------
+
+
+4)
+
+''' Escreva um programa que leia do teclado o nome e a idade de uma pessoa e que exiba a frase:  
+'fulano, meu nome é Python e eu tenho x anos', onde fulano e x são, respectivamente, o nome e o 
+dobro da idade lida pelo programa. Dica: help(str) '''
+
+nome = input('Digite o seu nome:')
+idade = int(input('Digite a sua iade:'))
+
+print('Olá',nome,'meu nome é Python e eu tenho',2*idade,'anos')
+
+
+------------------------------------------------------------------------------------------------
+
+5)
+ '''Escreva um programa que leia do teclado uma string (s), um caractere (c) e um número inteiro (i), e exiba uma string igual a 
+s, exceto que o elemento da posição i deve ser substituído pelo caractere c lido. '''
+
+s = input('Digite:')
+c = input('Digite caracter:')
+i = int(input('Digite um número:'))
+
+sr = s.replace(s[i - 1],c)
+
+print(sr)
+
+
+-------------------------------------------------------------------------------------------
+
+
+6) 
+
+'''Escreva um programa que leia do teclado uma string e exiba uma outra string com o caractere '#' no início, no meio e no 
+final dela. Exemplos: 
+'abcd'   
+'abcde'  
+exibirá a string '#ab#cd#' 
+exibirá a string '#ab#cde#' '''
+
+string = input('Digite uma string:')
+
+
+if len(string)%2 == 0:
+    novaString ='#' + string[0:len(string)//2] + '#' + string[len(string)//2:] +'#'
+if len(string)%len(string) == 0:
+    novaString ='#' + string[0:len(string)//2] + '#' +string[len(string)//2:] +'#'
+
+print(novaString)
+
+-----------------------------------------------------------------------------------------------
+
+7)
+
+'''Escreva um programa que leia do teclado o nome de uma pessoa e exiba a string formada pela segunda letra, pela letra do 
+meio e pela penúltima letra. O que acontece quando o nome só tem 1 caractere? '''
+
+nome = input('Digite o seu nome:')
+
+novaStr = nome[1] + nome[len(nome)//2] + nome[len(nome)-2]
+
+
+print(novaStr)
+
+---------------------------------------------------------------------------------------------------
+
+8) 
+
+'''Escreva um programa que leia do teclado duas strings e exiba a concatenação da primeira com o inverso da segunda, com 
+exceção do primeiro caractere de cada uma. Exemplo: 
+Entrada 
+'abcd' 
+'jihgfe' 
+Saída 
+'bcdefghi' '''
+
+string1 = input('Digite a sua primeira string:')
+string2 = input('Digite a sua segunda string:')
+
+novaStr1 = string1[1:]
+novaStr2 = string2[1:]
+invertido = novaStr2[::-1]
+
+Strfinal = novaStr1 + invertido
+
+print(Strfinal)
+
+------------------------------------------------------------------------------------------------------
+
+9) 
+
+
+'''Escreva um programa que leia do teclado o numerador e o denominador de uma fração, ambos inteiros, e exiba uma string 
+no seguinte formato: numerador/denominador = resultado da divisão. Dica: help(str) '''
+
+
+numerador = int(input('Digite o seu numerador:'))
+denominador = int(input('Digite o seu denominador:'))
+
+resultadoFração = numerador/denominador
+
+layout = str(numerador)+'/'+str(denominador)+ '=' + str(resultadoFração)
+
+print(layout)
+
+------------------------------------------------------------------------------------------------
+
+10)
+
+'''Escreva um programa que leia do teclado uma string representando uma data de nascimento (no formato 'dd/mm/aaaa') e 
+exiba uma senha gerada da seguinte forma: 
+dígitos do dia + '$' + dígitos do mês invertidos + '#' + dígitos do mês + '!' + dígitos do dia invertidos + '@' + dígitos do ano '''
+
+
+data = input('Digite a data do seu nascimento dd/mm/aaaa:')
+
+
+dtD = data[0:2]
+dataInvertidaD = dtD[::-1]
+
+dtM = data[3:5]
+dataInvertidaM = dtM[::-1]
+
+senha = data[0:2] + '$' +  dataInvertidaM + '#' + data[3:5:] + '!' + dataInvertidaD + '@' + data[6:]
+
+print(senha)
+
+
+
+----------------------------------------------------------------------------------------------------
+
+11) 
+
+''' Escreva um programa que leia do teclado três inteiros representando dia, mês e ano de nascimento de um aluno e exiba a 
+senha do aluno, string gerada a partir da concatenação da soma dos dígitos do dia com a soma dos dígitos do mês com a 
+soma dos dois últimos dígitos do ano. Exemplo: 
+Entrada Saída 
+27 
+3 
+1999 
+'9318'''
+
+dia = int(input('Digite a data do seu nascimento:'))
+mes = int(input('Digite o mes do seu nascimento:'))
+ano = int(input('Digite o ano do seu nascimento:'))
+
+anoX = ano/100
+anoY = anoX%100
+anoZ = anoY%10
+
+somaDia = str((dia//10) + (dia%10)) + str((mes//10) + (mes%10)) + str((anoX//10) + (anoX%10))
+
+
+print(somaDia)
+
+
+INCORRETO

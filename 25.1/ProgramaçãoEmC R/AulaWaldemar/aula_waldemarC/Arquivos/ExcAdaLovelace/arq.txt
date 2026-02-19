@@ -1,0 +1,5 @@
+3 
+Ada Lovelace: escritora
+Ioanis Margaronis: engenheiro
+Ana Beatriz: medica
+

@@ -1,0 +1,8 @@
+@article{turing_paper
+    author = {Turning, A. M.},
+    title = {Computing Machinery and Intelligence},
+    journal = {Mind},
+    volume = {LIX},
+    pages = {433-460},
+    year = {1950},
+}

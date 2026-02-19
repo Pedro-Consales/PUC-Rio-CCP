@@ -1,0 +1,13 @@
+{
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "files.associations": {
+        "string.h": "c",
+        "stdlib.h": "c",
+        "stdio.h": "c"
+    }
+}

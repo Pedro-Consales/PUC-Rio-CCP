@@ -1,0 +1,159 @@
+EXERCÍCIOS ENTRADA E SAÍDA 
+
+
+Questão1. Quantos pontos tem um time de futebol?
+
+vitórias = input('Digite o número de vitórias: ' )
+derrotas = input('Digite o número de derrotas: ')
+empates = input('Digite o número de empates: ')
+
+resultado =(int(vitórias)*3 + int(empates)*1 + int(derrotas)*0) 
+print('%s: %d'%('A pontuação do time é' , resultado))
+
+----------------------------------------------------------------
+
+Questão2. Tempo de permanência na biblioteca
+
+he = input('Hora de entrada: ')
+me = input('Minutos de entrada: ')
+
+hs = input('Hora de saída: ')
+ms = input('Minutos de saída: ')
+
+mp =(int(hs) - int(he))*60 + (int(ms) - int(me))
+hp = mp//60
+mpp = mp%60
+print('%s= %d:%d' %('Seu tempo de permanência foi', hp,mpp))
+
+---------------------------------------------------------------
+
+Questão3. Quantos alunos foram aprovados em %
+
+qntd_alunos = input('Quantos alunos tem na turma?: ')
+qntd_alunos_apr = input('Quantos alunos foram aprovados?: ')
+
+prc_alunos_apr = int(qntd_alunos_apr)/int(qntd_alunos) * (100)
+print('%d%s' %(prc_alunos_apr,'%'))
+
+--------------------------------------------------------------
+
+Questão4. Qual a sua altura em M e CM
+
+altura_cm = input('Quantos centímetros você tem?: ')
+
+altura_m = float(altura_cm) * (1*10**-2)
+
+print('%s'%('A sua altura em centímetros é'))
+print(altura_cm)
+
+
+print('%s'%('A sua altura em metros é'))
+print('%.2f'%(altura_m))
+
+---------------------------------------------------------------
+
+Questão5. Preço final de um carro alugado (NAO CONSEGUI TERMINAR)
+
+km_percorrido = input('Quantos Km o carro percorreu?: ')
+qntd_dias_aluguel = input('Quantos dias o carro ficou alugado?: ')
+
+preço_dia = int(qntd_dias_aluguel)*260
+preço_km = float(km_percorrido) * (0.15)
+
+preço_final = float((preço_dia) + (preço_km)) 
+
+print('%s= %.2f'%('Seu preço final é', preço_final))
+
+
+-----------------------------------------------------------------
+
+Questão 6. Progressão Aritimética
+
+pt = input ('Digide o primeiro termo(a1): ')
+r = input ('Digide a razão(r): ')
+n = input ('Digide o numero de termos(n): ')
+
+tn = float(pt + (n-1) * r)
+
+print('%s= %.f' %('Oresultado da PA é', tn))
+
+
+---------------------------------------------------------------
+Questão7. Quantos km a terra girou/hora
+
+
+Terra_h = int(input('Por quantas horas a terra está girando?: '))
+
+km_total = float(108.000 * Terra_h)
+
+print('%s: %.3f'%('A terra percorreu um total de',km_total))
+
+--------------------------------------------------------------
+
+Questão8. Área do pano para conbrir a caixa
+
+
+comprimento = float(input('Digite o comprimento(a) em cm:'))
+largura = float(input('Digite a largura(b) em cm:'))
+altura = float(input('Digite a altura(h) em cm:'))
+raio = float(input('Digite o raio(r) em cm:'))
+
+area1 = (comprimento * altura) * 2
+area2 = (largura * altura) * 2
+area_circulo = (2 * 3 * raio**2)
+area3 = (comprimento * largura - area_circulo)
+
+area_total = (area1 + area2 + area3)
+
+print('%s: %.2f%s'%('É preciso de',area_total,'cm**2' ))
+
+----------------------------------------------------------
+
+Questão 9. Volume da caixa - volume do cilindro 
+
+
+import math
+
+comprimento = float(input('Digite o comprimento(a) em cm:'))
+largura = float(input('Digite a largura(b) em cm:'))
+altura = float(input('Digite a altura(h) em cm:'))
+diametro = float(input('Digite o diametro(d) em cm:'))
+
+
+volume_caixa = (comprimento * largura * altura )
+volume_cilindro  = (2 * math.pi * (diametro/2) * altura)
+
+volume_final = (volume_caixa - volume_cilindro)
+
+print('%s: %.2f%s'%('É preciso de',volume_final,'cm**3' ))
+
+-----------------------------------------------------------
+
+Questão10. Semanas e Dias
+
+dias = int(input('Digite a quantidade de dias:'))
+
+semanas = (dias//7)
+dias_que_sobram = (dias % 7)
+
+print('%d %s e %d %s'%(semanas,'semanas',dias_que_sobram,'dias'))
+
+--------------------------------------------------------------
+
+Questão12. Area coprporal
+
+import math
+import math as m
+
+peso = float(input('Digite o seu peso em kg:'))
+altura = int(input('Digite o sua altura:'))
+
+a_mosteller = (m.sqrt(peso*altura)/60)
+a_haycock = (peso**0.5378) * (altura**0.3964) * 0.024265
+
+dif = abs(a_haycock - a_mosteller)
+
+print('%.2f%s e %.2f%s / %s: %.2f' %(a_mosteller,'m^2',a_haycock,'m^2','A diferença é',dif))
+
+--------------------------------------
+BASTA COLAR OS CODIGOS NO SPYDER (PYTHON)

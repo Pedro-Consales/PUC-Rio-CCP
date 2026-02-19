@@ -1,0 +1,4 @@
+Este eh um exemplo de arquivo.
+Ele possui algumas linhas.
+Sera que o caractere aparece muito?
+Vamos descobrir!

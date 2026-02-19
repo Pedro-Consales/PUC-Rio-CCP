@@ -1,0 +1,10 @@
+Exc Gabriel 
+
+
+dada a seguinte lista:
+
+l = ['oi', 9, [5.2, 'feijão', 'sal', ['escada',2.4], 'eu sou o maior'], 4, 'pirulito']
+
+resolva o enunciado:
+
+Faça uma função recursiva que percorra uma lista e retorne o elemento de maior tamanho dentro dela.

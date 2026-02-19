@@ -1,0 +1,7 @@
+Dom Casmurro/ 10 5 120 15 32 
+O Nome da Rosa/ 34 11 0 45 198 
+Angustia/ 19 0 1 29 39  
+A Menina Que Roubava Livros/ 12 72 46 55 19 
+O Corpo Fala/ 0 65 50 19 30 
+Viagem ao Mundo dos Taleban/ 3 98 0 112 45 
+Quem Mexeu no Meu Queijo?/ 78 9 1 8 0

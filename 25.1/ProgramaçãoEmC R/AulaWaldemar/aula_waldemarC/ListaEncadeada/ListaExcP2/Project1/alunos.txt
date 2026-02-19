@@ -1,0 +1,5 @@
+4
+Pedro Consales: 2410238 7.8 6.5 3.8
+Gustavo Valente: 2410558 8.5 7.3 7.2
+Gabriel Arruda: 2410462 3.3 8.9 3.4
+Arthur Barbosa: 2410338 2.6 3.2 9.5

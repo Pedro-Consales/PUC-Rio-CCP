@@ -1,0 +1,811 @@
+Exc Repetição:
+-----------------------------------------------------
+
+1- '''Faça uma função que receba a altura inicial de uma árvore, a taxa de crescimento ao ano e uma
+ quantidade n de anos. Esta 
+função deve calcular altura desta árvore após n anos. '''
+
+
+def CalculaAltura(AltuaIncial, TxCrescimentoAnual, anos):
+    cont = 0 
+    Altura = AltuaIncial
+    while cont < anos:
+       Altura = (TxCrescimentoAnual * Altura) + Altura
+       cont += 1
+    return Altura
+
+print(CalculaAltura(10,0.2,10))
+
+------------------------------------------------------
+
+2- '''Faça um programa para calcular e mostrar o valor a pagar pela anuidade de uma associação em cada um dos meses. O valor 
+básico, informado pelo usuário, é válido apenas para o mês de janeiro. Nos meses subsequentes, há um acréscimo de 5% ao 
+mês de juros (com juros sobre juros).  
+Por exemplo, valor em janeiro: R$100; em fevereiro, custa R$105; em março, custa R$110,25; e, em dezembro, R$171,03.'''
+
+vBásico = float(input('Digite o valor da mensalidade:'))
+
+mêses = 1
+
+while mêses < 13:
+    if mêses == 1:
+        print('No mês 1',vBásico)
+    elif mêses > 1:
+        vBásico = vBásico * 1.05
+        print('No mês %d %.2f' %(mêses,vBásico))
+    mêses += 1
+
+------------------------------------------------------
+
+3-
+"""
+Faça uma função que receba como parâmetro um valor inicial aplicado e a taxa de juros ao ano. A função calcula e retorna a 
+quantidade de anos necessários para duplicar o saldo inicial.
+"""
+
+
+vInicial = float(input('Digite o valor inicial aplicado:'))
+TxJurosAA = float(input('Digite a taxa percentual de juros ao ano:'))
+
+def CalculaQuantidade(vInicial,TxJurosAA):
+    dobroV = 2*vInicial
+    anos = 0
+    while vInicial < dobroV:
+        vInicial = vInicial * (1+TxJurosAA)
+        anos +=1
+    return anos
+
+print('A quantidade de anos demorados para o valor inicial dobrar é de',CalculaQuantidade(vInicial,TxJurosAA),'anos')
+
+
+
+
+------------------------------------------------------
+
+5-  """
+ Escreva um programa que pergunte a idade de 6 pessoas, calcule e mostre: 
+• a)  a quantidade de pessoas menores de idade (idade < 18 anos) 
+• b) média de idade destas pessoas 
+• c) a idade da pessoa mais velha 
+• d) percentual de pessoas com mais de 20 anos 
+    
+"""
+MaisVinte = 0
+MaisVelho = 0
+MenorDz = 0
+cont = 1 
+idadeTotal = 0
+while cont < 7:
+    idadePessoa = int(input('Digite a idade de pessoa:'))
+    idadeTotal = idadeTotal + idadePessoa
+    if idadePessoa < 18:
+        MenorDz += 1
+    if MaisVelho < idadePessoa:
+        MaisVelho = idadePessoa
+    if idadePessoa > 20:
+        MaisVinte += 1
+        Percentual = (MaisVinte/6)*100
+    cont +=1
+média = idadeTotal/6
+print('Das 6 pessoas',MenorDz,'é menor de idade' )
+print('A média das idades é %.2f' %(média))
+print('A idade da pessoa mais Velha é',MaisVelho)
+print('O percentual de pessoas com mais de 20 anos é %.2f%s'%(Percentual,'%'))
+
+
+---------------------------------------------------------------
+
+6 -
+"""
+Uma empresa realiza excursões desde que as seguintes regras sejam obedecidas: 
+• grupo de no mínimo 5 pessoas 
+• pelo menos a metade dos participantes deve ser maior de idade 
+• não pode haver integrantes com menos de 11 anos 
+• o integrante mais velho será escolhido o líder da excursão. 
+Faça um programa que leia o nome e a idade das pessoas de uma excursão e diga se este grupo satisfaz as regras e pode 
+participar da excursão (informando, também, o nome do seu líder) ou se este grupo não satisfaz as regras e, por isso, não 
+pode participar desta excursão.
+Obs.: o término da entrada dos participantes desta excursão ocorre quando for digitado um nome == ' '. Dica: conte o 
+número de pessoas, de maiores de idade e de menores de 11 anos. Guarde o valor do nome e da maior idade. 
+"""
+
+pessoas = 1
+maiorDz = 0
+MaisVelho = 0 
+while pessoas < 6:
+    nomePessoa = input('Informe o nome da pessoa:')
+    idadePessoa = int(input('Informe a idade da pessoa:'))
+    if MaisVelho < idadePessoa:
+        MaisVelho = idadePessoa
+        MaisVelho += 1
+pessoas +=1 
+print(MaisVelho)
+
+
+-------------------------------------------------
+
+7 - # -*- coding: utf-8 -*-
+"""
+Faça um programa que obtenha do teclado N valores (inteiros e positivos) e teste quais valores estão dentro e quais estão 
+fora do intervalo [1...15], escrevendo o valor e a mensagem correspondente. O valor de N também deve ser lido. 
+No final, seu programa deve exibir: 
+• a quantidade, soma e média aritmética dos valores dentro do intervalo; 
+• Quantidade de valores e o maior valor fora do intervalo.  
+Exemplo:  
+Entrada   Saída 
+Quantos números?    5 
+Número? 3    3 está dentro do intervalo 
+Número? 18    18 está fora do intervalo  
+Número? 7    7 está dentro do intervalo 
+Número? 50    50 está fora do intervalo  
+Número? 22    22 está fora do intervalo  
+   2 valores dentro do intervalo, soma = 10 e média = 5 
+3 valores fora do intervalo, maior = 50 
+
+"""
+
+QntdNúmero = int(input('Digite a quantidade de valores:'))
+
+MaiorVfora = 0
+fInt = 0 
+dInt = 0 
+soma=0
+cont = 0
+while cont < QntdNúmero:
+    Número = int(input('Qual o número:'))
+    if Número in range (1,15):
+        print(Número,'está dentro do intervalo')
+        soma = soma + Número
+        dInt += 1
+    else:
+        print(Número,'está fora do intervalo')
+        fInt += 1
+    if MaiorVfora < Número:
+        MaiorVfora = Número 
+    cont += 1
+média = soma/dInt 
+        
+print('%d valores detnro do intervalo, soma  =%d e média é =%d' %(dInt,soma,média))
+print('%d valores fora do intervaldo, maior =%d'%(fInt,MaiorVfora))
+
+-------------------------------------------------------------------
+
+
+8-
+"""
+Faça um programa para informar se cada um dos meses escolhidos pelo usuário para viajar, é de alta ou baixa temporada 
+(considerar os seguintes meses como alta temporada: dezembro a fevereiro, junho e julho). O programa pergunta ao usuário 
+o nome de 5 meses. 
+"""
+cont = 0
+while cont < 6 :
+    meses = input('Digite o mês que você pretende vaiajar:')
+    if meses == 'fevereiro' or meses == 'junho'or meses == 'julho' or meses == 'dezembro':
+        print('mês de alta temporada')
+    elif meses == 'janeiro' or meses == 'março' or meses =='abril' or meses == 'maio' or meses =='agosto' or meses == 'setembro'or meses == 'outubro' or meses == 'novembro':
+        print('mês de baixa temporada')
+    cont += 1
+
+
+----------------------------------------------------------------------
+
+9- 
+
+
+QntdMeses = int(input('Digite a quantidade de meses (1-12, janeiro à dezembro):'))
+MesesEscolhidos = ''
+contadorM=0
+cont = 0
+while cont < QntdMeses :
+    meses = str(input('Digite o mês que você pretende vaiajar:'))
+    if meses == 'fevereiro' or meses == 'junho'or meses == 'julho' or meses == 'dezembro':
+        print('mês de alta temporada')
+    elif meses == 'janeiro' or meses == 'março' or meses =='abril' or meses == 'maio' or meses =='agosto' or meses == 'setembro'or meses == 'outubro' or meses == 'novembro':
+        print('mês de baixa temporada')
+        baixaTemp += 1 
+    cont += 1
+QntdMesesEscolhidos = int(input('Digite a quantidade de meses escolhidos:'))
+while contadorM < QntdMesesEscolhidos:
+    QuaisMesesEscolhidos = input('Digite o nome dos meses escolhidos:')
+    MesesEscolhidos = MesesEscolhidos +' / '+ QuaisMesesEscolhidos 
+    contadorM += 1
+    
+print('Os meses escolhidos foram:', MesesEscolhidos)
+
+
+-----------------------------------------------------------------------
+
+10 - 
+
+
+QntdMeses = int(input('Digite a quantidade de meses (1-12, janeiro à dezembro):'))
+MesesEscolhidos = ''
+contadorM=0
+baixaTemp = 0 
+cont = 0
+while cont < QntdMeses :
+    meses = str(input('Digite o mês que você pretende vaiajar:'))
+    if meses == 'fevereiro' or meses == 'junho'or meses == 'julho' or meses == 'dezembro':
+        print('mês de alta temporada')
+    elif meses == 'janeiro' or meses == 'março' or meses =='abril' or meses == 'maio' or meses =='agosto' or meses == 'setembro'or meses == 'outubro' or meses == 'novembro':
+        print('mês de baixa temporada')
+        baixaTemp += 1 
+    cont += 1
+QntdMesesEscolhidos = int(input('Digite a quantidade de meses escolhidos:'))
+while contadorM < QntdMesesEscolhidos:
+    QuaisMesesEscolhidos = input('Digite o nome dos meses escolhidos:')
+    MesesEscolhidos = MesesEscolhidos +' / '+ QuaisMesesEscolhidos 
+    contadorM += 1
+    
+print('Os meses escolhidos foram:', MesesEscolhidos)
+
+print('São',baixaTemp,'meses de baixa temporada')
+
+------------------------------------------------------------------------
+
+11- 
+
+''''Faça um programa para informar se cada um dos meses escolhidos pelo usuário para viajar, é de alta ou baixa temporada 
+(considerar os seguintes meses como alta temporada: dezembro a fevereiro, junho e julho). O programa inicialmente 
+pergunta ao usuário a quantidade n de meses que deseja escolher e a seguir o nome de n meses. Ao final informar quantos 
+usuários escolheram pelo menos um mês na baixa temporada.'''
+
+usuários = int(input('Digite a quantidade de usuários:'))
+contadorM = 0
+cont = 0
+baixaTempEscolhidos = 0
+contUsuários = 0
+escolheuBaixa = 0
+while contUsuários < usuários:
+    QntdMeses = int(input('Digite a quantidade de meses (1-12, janeiro à dezembro):'))
+    while cont < QntdMeses :
+        meses = str(input('Digite o mês que você pretende vaiajar:'))
+        if meses == 'fevereiro' or meses == 'junho'or meses == 'julho' or meses == 'dezembro':
+            print('mês de alta temporada')
+        elif meses == 'janeiro' or meses == 'março' or meses =='abril' or meses == 'maio' or meses =='agosto' or meses == 'setembro'or meses == 'outubro' or meses == 'novembro':
+            print('mês de baixa temporada')
+            escolheuBaixa = 1 
+        cont += 1
+    contUsuários += 1
+    cont = 0 
+    if escolheuBaixa == 1:
+        baixaTempEscolhidos +=1 
+        escolheuBaixa = 0
+
+print('Os quantidade de usuários que escolheram baixa temporada foram ',baixaTempEscolhidos)
+
+------------------------------------------------------------------------------
+
+12 -
+
+
+
+QntdMembros = int(input('Quantos mesmbros essa família tem no plano de saúde:'))
+
+cont = 0 
+
+while cont < QntdMembros:
+    idadeMembro = int(input('Digite a idade do familiar'))
+    if idadeMembro < 10:
+        vPagar = 100 + 80
+    elif idadeMembro >= 10 and idadeMembro <= 30:
+        vPagar = 100 + 50
+    elif idadeMembro >= 40 and idadeMembro <= 60:
+        vPagar = 100 + 95
+    elif idadeMembro > 60:
+        vPagar = 100 + 130
+    cont+=1
+    print('O membro',cont,'vai pagar',vPagar)
+
+-------------------------------------------------------------------------------
+
+13-
+
+
+"""
+A tabela abaixo define o preço cobrado por uma importadora de perfumes: 
+    
+    Quantidade 
+Entrega Rápida   (US$/unidade) 
+<=1000 
+Entrega normal (US$/unidade) 
+11,10 
+>1000 e <=5000 
+9,10 
+10,00 
+>5000 e <=10000 
+10,00 
+6,40 
+>10000 
+6,40 
+3,30 
+3,30
+
+No entanto, a importadora concede um desconto de 30% para os pedidos de entrega rápida com valor total superior a US$ 
+4.000,00.  
+a) Escreva a função valor_unitario, que recebe a quantidade desejada e o tipo de entrega e retorna o preço unitário cobrado 
+pelo perfume de acordo com a tabela acima (não considerando o desconto!). 
+
+b) Escreva um programa que obtenha os dados dos pedidos de cada um dos n (lido) clientes, isto é, a quantidade e o tipo de 
+entrega (R- Entrega Rápida e N - Entrega Normal) desejado.  Mostrar para cada cliente, o valor total a pagar pelo pedido (em 
+US$). No final seu programa deve exibir o valor total dos pedidos e quantos clientes receberam desconto.
+"""
+
+
+def valor_unitario(qntdDesejada,tipoEntrega):
+    if qntdDesejada <= 1000 and tipoEntrega == 'N':
+        PreçoUnitário = 11.10
+        conta = qntdDesejada * PreçoUnitário
+    elif qntdDesejada > 1000 and qntdDesejada <=5000 and tipoEntrega == 'N':
+        PreçoUnitário = 10.00
+        conta = qntdDesejada * PreçoUnitário
+    elif qntdDesejada > 5000 and qntdDesejada <=10000 and tipoEntrega == 'N':
+        PreçoUnitário = 6.40
+        conta = qntdDesejada * PreçoUnitário
+    elif qntdDesejada > 10000 and tipoEntrega == 'N':
+        PreçoUnitário = 3.30
+        conta = qntdDesejada * PreçoUnitário
+        
+        '''tipo de entrega = R'''
+    if qntdDesejada <= 1000 and tipoEntrega == 'R':
+        PreçoUnitário = 9.10
+        conta = qntdDesejada * PreçoUnitário
+    elif qntdDesejada > 1000 and qntdDesejada <=5000 and tipoEntrega == 'R':
+        PreçoUnitário = 10.00
+        conta = qntdDesejada * PreçoUnitário
+    elif qntdDesejada > 5000 and qntdDesejada <=10000 and tipoEntrega == 'R':
+        PreçoUnitário = 6.40
+        conta = qntdDesejada * PreçoUnitário
+    elif qntdDesejada > 10000 and tipoEntrega == 'R':
+        PreçoUnitário = 3.30         
+        conta = qntdDesejada * PreçoUnitário
+    if conta > 4000 and tipoEntrega == 'R':
+        conta = conta*0.7
+        print('Você recebeu um desconto de 30%')
+    return conta
+
+
+def PedidoCliente():
+    contadorClientes = 1 
+    qntdClientes = int(input('Digite a quantidade de cliente:'))
+    while contadorClientes <= qntdClientes:
+        qntdDesejada = int(input('Digite a quantidade de perfume desejada:'))
+        tipoEntrega = input('Digite o tipo de entrega desejada (Entrega normal(N)/Entrega rápida(R)):')
+        print('O cliente',contadorClientes,'irá pagar',valor_unitario(qntdDesejada,tipoEntrega))
+        contadorClientes += 1
+
+PedidoCliente()
+
+-----------------------------------------------------------------------------------
+
+14- '''Faça um programa que inicialmente leia a quantidade de candidatos do Rio de Janeiro de um concurso. A seguir, para cada 
+candidato, o programa deverá ler seu nome e sua nota, exibindo se o candidato foi aprovado ou reprovado. Para ser 
+aprovado, o candidato deverá ter nota superior a 80.  
+Ao final o programa deverá exibir a quantidade de aprovados, a quantidade de reprovados e a nota média dos candidatos. '''
+
+
+'''Faça um programa que inicialmente leia a quantidade de candidatos do Rio de Janeiro de um concurso. A seguir, para cada 
+candidato, o programa deverá ler seu nome e sua nota, exibindo se o candidato foi aprovado ou reprovado. Para ser 
+aprovado, o candidato deverá ter nota superior a 80.  
+Ao final o programa deverá exibir a quantidade de aprovados, a quantidade de reprovados e a nota média dos candidatos.'''
+
+
+candidatosConcurso = int(input('Digite a quantidade de candidatos:'))
+contadorCandidato = 0 
+candidatosAprovados = 0
+candidatosReprovados = 0 
+nota = 0
+soma = 0
+while contadorCandidato < candidatosConcurso:
+    nome = input('Digite o nome do candidato:')
+    nota = float(input('Digite a nota do candidato:'))
+    if nota > 80:
+        candidatosAprovados += 1 
+    elif nota <= 80:
+        candidatosReprovados += 1
+    contadorCandidato += 1
+    soma = soma + nota
+média = soma/candidatosConcurso
+
+
+
+
+
+print('A quantidade de aprovados é',candidatosAprovados)
+print('A quantidade de reprovados é',candidatosReprovados)
+print('A média dos alunos é',média)
+
+
+-----------------------------------------------------------------------
+
+
+15- 
+
+'''Faça um programa que inicialmente leia a quantidade de candidatos de um concurso. A seguir, para cada candidato, deverá 
+ler seu nome e suas 6 notas, exibindo se o candidato foi aprovado ou reprovado. Para ser aprovado, o candidato deverá ter 
+média aritmética das notas superior a 80. Escreva uma função para ler as 6 notas e retornar a média aritmética. 
+2 
+Ao final o programa deverá exibir a quantidade de aprovados, a quantidade de reprovados e a nota média dos candidatos. 
+'''
+
+
+def calculamédia():
+    nota1 = float(input('Digite a nota 1 do candidato:'))
+    nota2 = float(input('Digite a nota 2 do candidato:'))
+    nota3 = float(input('Digite a nota 3 do candidato:'))
+    nota4 = float(input('Digite a nota 4 do candidato:'))
+    nota5 = float(input('Digite a nota 5 do candidato:'))
+    nota6 = float(input('Digite a nota 6 do candidato:'))
+    soma = (nota1 + nota2 + nota3 + nota4 + nota5 + nota6)
+    return soma
+
+candidatosConcurso = int(input('Digite a quantidade de candidatos:'))
+contadorCandidato = 0 
+candidatosAprovados = 0
+candidatosReprovados = 0 
+soma = 0
+
+
+while contadorCandidato < candidatosConcurso:
+    nome = input('Digite o nome do candidato:')
+    Média = calculamédia()/6
+    if Média <= 80:
+        candidatosReprovados += 1 
+        print('reprovado')
+    else:
+        candidatosAprovados += 1
+        print('aprovado')
+    contadorCandidato += 1
+    soma = soma + Média
+    
+
+MédiaCandiadtos = soma/candidatosConcurso
+
+
+
+print('A quantidade de aprovados é',candidatosAprovados)
+print('A quantidade de reprovados é',candidatosReprovados)
+print('A média dos alunos é',MédiaCandiadtos)
+
+----------------------------------------------------------------------------
+
+16 - Feito em sala, erro da questão
+
+
+
+-----------------------------------------------------------------------------
+
+17 - Feito em sala
+
+
+-----------------------------------------------------------------------------
+
+18 -''' Um professor resolveu agrupar seus 400 alunos em 3 grupos: o grupo “pró”, o grupo “contra” e o grupo “neutro”. Para saber 
+a qual grupo o aluno pertence, o professor aplicou um questionário cujas respostas podem ser sim ou não. 
+a) Faça uma função que recebe o número de questões, captura as respostas de cada uma das questões de um aluno e retorna 
+a quantidade de respostas positivas. 
+Obs: o aluno digita 's', quando concorda e 'n' quando discorda da questão 
+b) Faça uma função que recebe o número de questões e a quantidade de respostas SIM e exibe o grupo de respostas de 
+acordo com o seguinte critério: 
+• pelo menos 2/3 de respostas sim  ➔ grupo “pró” 
+• pelo menos 2/3 de respostas não ➔ grupo “contra” 
+• demais situações 
+➔ grupo “neutro” 
+c) Faça um programa que inicialmente capture o número de respostas do questionário. A seguir, para cada aluno da turma, 
+obtenha sua matrícula e respostas (utilizando a função do item a), e exiba sua matrícula e o nome de seu grupo (utilizando a 
+função do item b).'''
+
+def RespoPos(qntdQuestões):
+    cont = 0
+    contSim = 0
+    while cont < qntdQuestões:
+        respostas = input('Você concorda? Digite a sua resposta (s)sim ou (n)não:')
+        if respostas == 'sim':
+            contSim += 1
+        cont +=1 
+    return contSim
+
+
+
+def Grupo(qntdQuestões,qntdAlunos):
+    aluno = 0
+    grupoPro = 0
+    grupoContra = 0 
+    grupoNeutro = 0 
+    while aluno < qntdAlunos:
+        print('respotas do aluno',aluno+1)
+        RespostaPos = RespoPos(qntdQuestões)
+        if RespostaPos >= (2/3*qntdQuestões):
+            grupoPro += 1
+        elif RespostaPos <= (1/3*qntdQuestões):
+            grupoContra += 1
+        else:
+            grupoNeutro += 1
+        aluno += 1
+    print(grupoPro,' participante no grupo pró')
+    print(grupoContra,' participante no grupo contra')
+    print(grupoNeutro,' participante no grupo neutro')
+
+
+
+
+ 
+ 
+ 
+qntdQuestões = int(input('Digite a quantidadede questões:'))
+qntdAlunos = int(input('Digite a quantidade de alunos:'))
+Grupo(qntdQuestões,qntdAlunos)
+
+
+-------------------------------------------------------------------------------
+
+19 - ?????????????????????????
+
+# -*- coding: utf-8 -*-
+"""
+Faça uma função que receba um número n, inteiro e positivo, e retorne True se este número é primo (isto é, só é divisível 
+por 1 e por ele mesmo) ou False, caso contrário.  
+"""
+
+número = int(input('Digite o número:'))
+
+def Primo():
+    while 
+    if número%número == 0 and número%1 == 0 :
+        print('O', número, 'é um número primo')
+    elif número%número != 0 and número%1 != 0:
+        print('O', número, 'não é um número primo')
+        
+Primo()
+
+
+=--------------------------------------------------------------------------------
+
+20 ???????????
+
+-----------------------------------------------------------------------------------
+
+21
+
+
+ ''' Escreva uma função que receba duas strings e retorne a substring com os primeiros caracteres iguais, caso existam ou '' caso 
+contrário 
+Exemplos: 'abacate' e 'aberto' --> 'ab' 
+'carnaval'  e 'carne' --> 'carn' 
+'camelo'  e 'cedo' --> 'c' 
+'camelo' e 'maçã' --> '' '''
+
+def verfIguais(s1,s2):
+    cont = 0 
+    iguais =''
+    if s1 < s2:
+        maiorPalavra = s2
+    elif s1 > s2:
+        maiorPalavra = s1
+    while cont < len(maiorPalavra):
+        if s1[cont] == s2[cont]:
+            iguais = iguais + s1[cont] 
+        else: 
+            pass
+        cont+=1
+    return iguais
+
+s1 = 'abacate'
+s2 = 'aberto'
+
+print(verfIguais(s1,s2))
+
+
+
+---------------------------------------------------------------------
+
+22)
+
+'''Escreva uma função que receba duas strings, s e t, e retorne o número da posição de s onde inicia a 1ª ocorrência de t em s, 
+ou False caso contrário. 
+Exemplos: 'Biobanana' e 'an' --> 4 
+'Biobanana' e 'on' --> False'''
+
+def retornaNP(s,t):
+    cont = 0 
+    while cont < len(s):
+        if s[cont:cont+len(t)] == t:
+            return cont
+        cont +=1
+    return False
+print(retornaNP('Biobanana','an'))
+
+
+
+-------------------------------------------------------------------
+23)
+
+''' Escreva uma função que receba uma palavra e retorna True se seus caracteres estão em ordem lexicográfica, False, caso 
+contrário.  
+Exemplo: ano --> True bola --> False'''
+
+def Lex(palavra):
+    cont = 0 
+    while cont < len(palavra) - 1 :
+        if palavra[cont] > palavra[cont+1]:
+            return False
+        cont+=1
+    return True
+
+print(Lex('bola'))
+
+---------------------------------------------------------------------
+
+24) '''Crie uma função que mostra os caracteres de uma string que são repetidos. 
+Dica: pense na string em duas partes, uma que já foi verificada e outra que ainda não foi. A cada ciclo, o 1º caractere da parte 
+não percorrida é testado. '''
+
+def mostraCaractere(palavra):
+    cont = 0 
+    contador = 1
+    repetidos = ''
+    while cont < len(palavra):
+        while contador < len(palavra):
+            if palavra[contador] == palavra[cont]:
+                if palavra[cont] not in repetidos:
+                    repetidos += palavra[cont]            
+            contador += 1
+        cont += 1
+        contador = cont + 1
+    print(repetidos)
+    
+mostraCaractere('banana')
+   
+--------------------------------------------------------------------
+
+25)
+
+'''Crie uma função que mostra os caracteres de uma string que não são repetidos.'''
+
+def mostraCaractere(palavra):
+    cont = 0 
+    contador = 0
+    repetidos = ''
+    repetida = 0
+    while cont < len(palavra):
+        while contador < len(palavra):
+            if palavra[contador] == palavra[cont]:
+                repetida +=1           
+            contador += 1
+        if repetida == 1 and palavra[cont] not in repetidos:
+            repetidos = repetidos + palavra[cont]
+        repetida = 0
+        cont += 1
+        contador = 0
+    print(repetidos)
+    
+mostraCaractere('banana')
+
+----------------------------------------------------------------------------
+
+26) 
+
+''' Faça um programa que permita ao usuário digitar o seu nome e em seguida mostre o nome do usuário de trás para frente 
+utilizando somente letras maiúsculas. Lembre−se que o nome do usuário contém letras maiúsculas e minúsculas.'''
+
+
+nome = input('Digite seu nome:')
+
+novoNome = ''
+cont = 0
+while cont < len(nome):
+    if nome[cont] >= 'A' and nome[cont] < 'z':
+        novoNome = novoNome + nome[cont].lower()
+        contrário = novoNome[::-1]
+    else:
+        contrário = novoNome[::-1]
+    cont+=1
+
+print(contrário)
+
+
+-------------------------------------------------------------------------------------
+
+27) ''' Dado uma string com uma frase informada pelo usuário (incluindo espaços em branco), conte: 
+• quantos espaços em branco existem na frase. 
+• quantas vezes aparecem as vogais a, e, i, o, u. '''
+
+
+frase = input('Digite uma frase:')
+
+cont = 0 
+contadorEmBranco = 0
+contVogal = 0 
+while cont < len(frase):
+    if frase[cont] == ' ':
+        contadorEmBranco +=1
+    if 'a' == frase[cont] or 'e' == frase[cont] or 'i' == frase[cont] or 'o' == frase[cont] or 'u' == frase[cont]:
+        contVogal+=1
+    cont +=1
+
+print('Existem',contadorEmBranco,'espaços em branco na frase')
+print('Existem',contVogal,'voagais na frase')
+
+
+
+--------------------------------------------------------------------------------
+
+28) ''' Um palíndromo é uma sequência de caracteres cuja leitura é idêntica se feita da direita para esquerda ou vice−versa. Por 
+exemplo: OSSO e OVO são palíndromos. Em textos mais complexos os espaços e pontuação são ignorados. A frase SUBI NO 
+ONIBUS é o exemplo de uma frase palíndromo onde os espaços foram ignorados.  
+Faça um programa que leia uma sequência de caracteres, mostre−a e diga se é um palíndromo ou não. '''
+
+
+'''frase = input('Digite uma frase sem os espaços:')
+
+cont=0
+contadorLetrasIguais = 0 
+fraseContrária = frase[::-1]
+while cont < len(frase):
+    if frase[cont] == fraseContrária[cont]:
+        contadorLetrasIguais +=1 
+    else:
+        print('Essa frase NÃO é um palíndromo')
+    cont+=1
+
+print(frase)
+print()'''
+
+FALTA TERMINAR.
+
+---------------------------------------------------------------------
+
+30-
+
+
+"""
+Em toda esta questão, considere que cada data é representada por três números inteiros, correspondentes ao dia, mês e 
+ano, respectivamente. 
+a) Escreva uma função, chamada produto_vencido, que recebe a data atual e a data de validade de um produto e retorna 
+True, caso o produto esteja fora da validade, ou False, caso contrário. 
+b) Escreva uma função, chamada calcula_multa, que recebe a quantidade de produtos conferidos e a quantidade de 
+produtos fora da validade, e retorna o valor da multa, de acordo com as seguintes regras: 
+• 0, caso nenhum produto conferido esteja fora da validade; 
+• 100,00, caso até 10% dos produtos conferidos estejam fora da validade; 
+• 10.000,00, caso mais de 10% e até 30% dos produtos conferidos estejam fora da validade; 
+• 100.000,00, caso mais de 30% dos produtos conferidos que estejam fora da validade. 
+
+c) Faça um programa que, inicialmente, leia a data atual. Em seguida, para cada produto conferido, leia o nome do produto 
+e a data do seu vencimento, exibindo, para cada produto, uma mensagem que informe se ele está ou não na validade. 
+A entrada de dados é finalizada quando for digitado um nome de produto vazio (''). 
+Após o término da entrada de dados o programa deverá, então, calcular e exibir o valor da multa, caso haja, ou exibir uma 
+mensagem que informe que o supermercado está isento de multas.
+"""
+
+def produto_vencido(dtAtual,dtVal):
+    if dtAtual > dtVal:
+        return True
+    else:
+        return False
+    
+def calcula_multa (qntdPconf, qntdPfVal):
+    if qntdPfVal == 0:
+        vMulta = 0
+    elif qntdPfVal == ((10/100)*qntdPconf):
+        vMulta = 100
+    elif qntdPfVal>= ((10/100)*qntdPconf) and qntdPfVal <= ((30/100)*qntdPconf):
+        vMulta = 10000
+    elif qntdPfVal > ((30/100)*qntdPconf):
+        vMulta = 100000
+    return vMulta
+        
+
+dtAtual = int(input('Digite a data mês e ano xxxxxx:'))
+qntdProduto = int(input('Digite a quantiade do produto:'))
+nomeProduto = input('Digite o nome do produto:')
+qntdPfVal = 0 
+qntdPconf = 0 
+while qntdPconf < qntdProduto:
+    dtVal = int(input('Digite a data de validade do produto:'))
+    if produto_vencido(dtAtual, dtVal) == True:
+        qntdPfVal += 1
+        print(calcula_multa(qntdPconf, qntdPfVal))
+    else:
+        print('O supermercado está isento de multas')
+    qntdPconf += 1
+    calcula_multa(qntdPconf, qntdPfVal)

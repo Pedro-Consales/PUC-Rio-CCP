@@ -1,0 +1,366 @@
+/Exc1 lista - Entrada e Saída
+// 
+//Faça um programa que obtenha o dia de retirada e o dia da entrega de um livro da biblioteca (ambos no 
+//mesmo mês) e informe quantos dias o livro ficou emprestado.
+//
+//
+//
+//#include <stdio.h>
+//
+//
+//int main(void) {
+//
+//	int diaRetirada, diaEntrega, totalDedias;
+//
+//	printf("Digite a data de retirada do livro: ");
+//	scanf("%d", &diaRetirada);
+//	
+//	printf("\n");
+//
+//	printf("Digite a data de entrega do livro: ");
+//	scanf("%d", &diaEntrega);
+//
+//	totalDedias = diaEntrega - diaRetirada;
+//
+//	printf("%d dias foi o total de dias que o livro fico emprestado", totalDedias);
+// 
+//	return 0;
+//}
+//
+//
+// ===============================================================================================================
+// 
+// Exc 4 lista - Entrada e Saída
+//  Faça um programa que calcule e mostre a área e o perímetro de uma sala retangular cujas medidas são 
+//	fornecidas pelo usuário.
+// 
+// 
+//
+//#include <stdio.h>
+//
+//
+//int main(void) {
+//
+//	float area,perimetro, base, altura;
+//
+//
+//	printf("informe em metros o tamanho da base: ");
+//	scanf("%f", &base);
+//
+//	printf("informe em metros o tamanho da altura: ");
+//	scanf("%f", &altura);
+//
+//
+//	area = base * altura;
+//
+//	perimetro = base + altura;
+//
+//	printf("O tamanho em da aera em metros quadrados foi = %.1f \n\n", area);
+//
+//	printf("O tamanho em do perimetro em metros foi = %.1f", perimetro);
+//
+//	return 0;
+//
+//}
+//
+// 
+// 
+// 
+// =====================================================================================================================
+// 
+// Exc 5 - Condicional ??????????????????????????????????????????????????????????????????????????????????????????????????????????????
+// ????????????????????????????????????????????????????????????????????????????????????????????????????????????????????
+// 
+// Faça um programa que leia dois números e um operador (caracter ‘+’, ‘-’, ‘*’ ou ‘/’) e realize a operação 
+//correspondente entre os operandos dados.
+// 
+//// 
+//
+//#include <stdio.h>
+//
+//
+//int main(void) {
+//
+//	
+//
+//
+//}
+//
+// 
+// ========================================================================================================================
+//
+// 
+// Exc6 Condicional
+//
+// Faça um programa que leia a matrícula e as duas notas de um aluno, calcule a média aritmética e exiba a 
+//matrícula, a média, a situação(“aprovado”: média >= 5.0, “reprovado” : média < 3.0 ou “em final” : média
+//>= 3.0 e < 5.0) e a mensagem “parabéns”(caso a média do aluno seja acima de 9.0).O programa deverá
+//tilizar as seguintes funções :
+//a) para exibir a situação do aluno.Esta função deverá receber como parâmetro a média do aluno.
+//b) para exibir a mensagem “parabéns”.Esta função deverá receber a média do aluno como parâmetro.
+//
+//
+//#include <stdio.h>
+//
+//
+//int main(void) {
+//
+//
+//	int matricula, nota1, nota2;
+//
+//	printf("Digite a sua matricula: ");
+//	scanf("%d", &matricula);
+//
+//	printf("\n");
+//
+//	printf("Digite a nota1 do aluno: ");
+//	scanf("%d", &nota1);
+//
+//	printf("Digite a nota2 do aluno: ");
+//	scanf("%d", &nota2);
+//
+//
+//
+//}
+//
+//
+// 
+// ===========================================================================================================================
+// 
+// 
+// Exc1) MISSÃO2 28/08/2024 - Função 
+// Para realizar um debate sobre ao acesso a dados considerados sigilosos em campanhas políticas,
+// um professor de ética resolveu agrupar seus 400 alunos em 3 grupos: o grupo “pró”, o grupo “contra” e o grupo “neutro”. 
+// Para saber a qual grupo o aluno pertence, o professor aplicou um questionário cujas respostas podem ser sim (1) ou não (0). 
+//
+// 
+//Faça uma função que recebe o número de questões, capture do teclado as respostas de cada uma das questões de um aluno 
+// e retorne a quantidade de respostas positivas.
+//
+//Obs: o aluno digita 1, quando concorda e 0 quando discorda da questão
+//
+//Protótipo : int contabiliza_respostas(int n)
+//
+//
+//
+//Faça um programa que inicialmente capture o número de questões do questionário.A seguir, para cada aluno da turma, 
+// obtenha sua matrícula e respostas(utilizando a função do item a), e exiba a matrícula com o nome de seu grupo de acordo com 
+// o seguinte critério :
+//
+//2 / 3 de respostas sim 	è grupo “pró”
+//
+//2 / 3 de respostas não 	è grupo “contra”
+//
+//Demais situações	è grupo “neutro”
+//
+//Obs.: Faça uma função para exibir o nome do grupo de respostas.Esta função recebe o número de questões e a 
+// quantidade de respostas SIM.A função não recebe a matrícula.
+//
+//
+//#include <stdio.h>
+//#define alunos 400
+//
+//int contabiliza_respostas(int nQuestoes) {
+//
+//
+//	int i, resposta, contSim;
+//
+//	contSim = 0;
+//
+//	for (i = 0; i < nQuestoes; i += 1) {
+//
+//		printf("Digite a resposta sim(1) ou nao(2): ");
+//		scanf("%d", &resposta);
+//
+//		if (resposta == 1) {
+//
+//			contSim += 1;
+//		}
+//
+//	}
+//
+//	return contSim;
+//
+//}
+//
+//
+//void exibeGrupo(int nQuestoes, int totSim) {
+//
+//	float perc;
+//	perc = (float)totSim / nQuestoes;
+//	
+//	if (perc > (float)0.666) {
+//
+//		printf("Grupo pro.\n");
+//	}
+//	else if (perc < (float)0.333) {
+//
+//		printf("Grupo contra. \n");
+//	}
+//	else
+//	{
+//		printf("Grupo neutro. \n");
+//	}
+//	return;
+//
+//
+//
+//}
+//
+//
+//
+//
+//
+//int main(void) {
+//
+//
+//
+//	int x, nQuestoes, matricula, qtdSim;
+//
+//	printf("Digite o numero de questoes: ");
+//	scanf("%d", &nQuestoes);
+//
+//	for (x = 0; x < alunos; x++) {
+//
+//		printf("Digite a matricula: ");
+//		scanf("%d", &matricula);
+//
+//		qtdSim = contabiliza_respostas(nQuestoes);
+//		printf("Aluno: %d + => ", matricula);
+//		exibeGrupo(nQuestoes, qtdSim);
+//
+//
+//	}
+//
+//
+//
+//	return 0;
+//}
+//
+// =========================================================================================================================================
+EXC7) 7. Faça um programa que receba dois números X e Y, sendo X < Y. Calcule e mostre a soma dos números 
+//pares desse intervalo de números, incluindo os números digitados. - Entrada e Saída 
+// 
+// 
+//#include <stdio.h>
+//
+//int main(void) {
+//
+//	int x, y, sum;
+//
+//	x = 2;
+//	y = 6;
+//	sum = 0; 
+//
+//	while (x <= y) {
+//
+//		if (x % 2 == 0) {
+//
+//			sum += x;
+//
+//		}
+//
+//		x += 1;
+//
+//	}
+//
+//	x = 2;
+//
+//	printf("A soma dos numeros pares no intervalo %d .. %d e = %d",x, y, sum);
+//
+//
+//
+//	return 0;
+//}
+//
+// 
+// 
+// ======================================================================================================================================
+// 
+// Exc8)  Refaça o programa anterior, agora sem considerar que necessariamente X<Y. Caso X>Y, considere o 
+//intervalo como sendo de Y até X. (NÃO SERIA IGUAL??????) - Entrada e Saída
+//
+//
+//
+//#include <stdio.h>
+//
+//int main(void) {
+//
+//	int x, y, sum;
+//
+//	x = 2;
+//	y = 6;
+//	sum = 0;
+//
+//	while (x <= y) {
+//
+//		if (x % 2 == 0) {
+//
+//			sum += x;
+//
+//		}
+//
+//		x += 1;
+//
+//	}
+//
+//	x = 2;
+//
+//	printf("A soma dos numeros pares no intervalo %d .. %d e = %d", x, y, sum);
+//
+//
+//
+//	return 0;
+//}
+//
+//========================================================================================================================================
+//
+// 
+// Exc9)  Uma empresa para se tornar conhecida do público jovem, decidiu sortear brindes na entrada de uma festa. 
+//Como não há brinde para todos, seriam premiados apenas os convidados cujo mês de aniversário é divisor do
+//dia do aniversário.Faça um programa em C que inicialmente leia a quantidade de brindes que serão
+//distribuídos.Em seguida, para cada convidado que ingressa na festa, o programa deve ler o dia e o mês do
+//seu aniversário.Se o convidado tem direito ao brinde, o programa deve exibir a mensagem “PARABÉNS”.
+//Quando não há mais brindes para distribuir, o programa deve exibir a mensagem “PROMOÇÃO
+//ENCERRADA” e ser encerrado.
+// 
+// 
+//
+//
+//#include <stdio.h>
+//
+//int main(void) {
+//
+//	int diaAnv, mesAnv;
+//	int qtdBrindes, contBrindes;
+//
+//	printf("Digite a quantidade de brindes que serão distribuidos:");
+//	scanf("%d", &qtdBrindes);
+//
+//
+//	contBrindes = 0;
+//	while (contBrindes < qtdBrindes) {
+//
+//		printf("Digite o dia do seu aniversario: ");
+//		scanf("%d", &diaAnv);
+//		printf("Digite o mes do seu aniversario: ");
+//		scanf("%d", &mesAnv);
+//
+//		if (diaAnv % mesAnv == 0) {
+//
+//			printf("Parabens\n");
+//			contBrindes += 1;
+//		}
+//
+//	}
+//
+//	if (contBrindes == qtdBrindes) {
+//
+//		printf("Promocao encerrada, nao ha mais brindes");
+//
+//	}
+//
+//
+//		return 0;
+//
+//	}
