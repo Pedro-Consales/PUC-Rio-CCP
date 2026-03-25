@@ -1,0 +1,22 @@
+RELATÓRIO — LABORATÓRIO 12
+Autor: Pedro Consales (2410238)
+
+1) stringinvasora
+No binário stringinvasora zerei os primeiros 32 bytes do buffer da main e sobrescrevi os 8 bytes do rbp 
+da main com valores arbitrários. Ao executar, o fluxo foi redirecionado e apareceu a mensagem da função 
+danger. Em vez de ocorrer segmentation fault, o programa também chamou o illegalhandler, indicando que um 
+mecanismo de tratamento interceptou a falha esperada.
+
+stringinvasora2 (inserção do endereço de smoke)
+Na versão stringinvasora2 estendi a sequência de bytes para preencher a pilha com o endereço da função 
+smoke. A execução mostrou primeiro a mensagem de danger e em seguida a de smoke. Como smoke invoca 
+exit(0), o programa encerrou-se normalmente — comprovando que sobrescrever o endereço de retorno para 
+smoke faz o fluxo saltar para essa rotina e terminar de forma controlada.
+
+stringinvasora2 (código injetado + chamada a fizz)
+Ainda em stringinvasora2 escrevi no array buf instruções montadas a partir de objdump codigo.o. 
+Após preencher os primeiros bytes do buf e sobrescrever o rbp da main, substituí o endereço de retorno
+de getbuf pelo endereço de buf (obtido dinamicamente pela própria getbuf). 
+Na sequência, coloquei o endereço de fizz como retorno final, de modo que, depois do ret do código 
+injetado, a função fizz fosse invocada. Observou-se a execução do código injetado seguida da chamada a 
+fizz, conforme planejado.

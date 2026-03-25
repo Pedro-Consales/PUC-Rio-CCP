@@ -1,0 +1,49 @@
+1) Traduzindo a função add para assembly, primeiro iniciei construindo o registro 
+de ativação. Salvei na pilha o base pointer da função chamadora e criei a base do RA
+Abri espaço de 32 bytes na pilha e salvei os registradores callee-saved 
+(rbx, r15, r12, r13) no RA. Coloquei o valor 0 no registrador ebx (análogo a int a=0)
+e movi rdi para r15 para manter uma cópia do ponteiro da struct. No label LOOP, 
+primeiramente comparo o valor armazenado em r15 com 0, equivalente a comparar se 
+x == NULL. Caso seja igual a 0, pulo para o label FORA_LOOP. 
+Caso contrário, movo o conteúdo apontado por r15 para r12d (x->val), somo esse valor 
+ao ebx (a += x->val). Para navegar para o próximo elemento da lista, adiciono 8 ao r15 
+(movendo para o campo next), carrego o endereço armazenado nessa posição em r13, e 
+depois movo esse endereço para r15. Depois disso pulo para o label LOOP e o processo 
+se repete. No final, movo o resultado de ebx para eax, restauro todos os registradores callee-saved e finalizo a função.
+
+
+2) Traduzindo a função add2 para assembly, primeiro salvei na pilha o BP da função 
+chamadora e criei a base do RA. Abri espaço de 16 bytes e salvei o valor de rbx da 
+função chamadora no RA. Para implementar a estrutura condicional, comparei rdi com 
+zero (x == NULL). Caso sejam iguais, movo 0 para eax e pulo para o label FIM. Caso 
+contrário, pulo para o label ELSE, onde faço ebx receber o conteúdo apontado por rdi 
+(x->val), movo o conteúdo de 8(%rdi) para rdi (x = x->next), chamo add2 recursivamente
+e somo ao eax (valor de retorno da função recursiva) o valor de ebx (x->val atual).
+Depois vou para o label FIM, onde restauro o ebx da função chamadora que estava no RA 
+e finalizo a função.
+
+
+3) Traduzindo a função boo para assembly, primeiro salvei na pilha o BP da função 
+chamadora e criei a base do RA. Abri espaço de 16 bytes na pilha. Entrando no WHILE,
+comparo o valor de esi (parâmetro n) com 0. Caso sejam iguais, pulo para o label FIM 
+onde a função é finalizada. Caso contrário, salvo os registradores referentes aos 
+parâmetros das funções no RA. O primeiro parâmetro para f já está correto em rdi 
+(px->val1), então movo edx (val) para esi para ser o segundo parâmetro da função f, 
+e depois chamo a função f. Após isso, restauro os parâmetros originais do RA e faço 
+4(%rdi) (px->val2) receber eax (valor de retorno da função f). Antes de voltar ao 
+início do WHILE, somo 8 a rdi para avançar para a próxima struct do array (px++) e 
+decremento 1 de esi (n--).
+
+
+4) Traduzindo a função map2 para assembly, primeiro salvei na pilha o BP da função 
+chamadora e criei a base do RA. Abri espaço de 32 bytes e salvei r12 (callee-saved)
+ da função chamadora no RA. Inicialmente, movi 0 para r12d, que funcionará como o 
+ contador i. No label INICIO_LOOP, comparei r12d com edx (parâmetro n) e caso r12d 
+ seja maior ou igual, pulo para o label ENCERRA_FUNCAO. Caso contrário, calculo o 
+ endereço outro[i]: estendo r12d para 64 bits em r13, uso shift left por 2 posições 
+ para multiplicar por 4 (shlq $2), e somo rsi ao resultado. Faço processo similar para 
+ calcular um[i] em r14, mas somando rdi. Depois disso, salvo os registradores que guardam os parâmetros 
+ das funções no RA, preparo edi para receber o conteúdo armazenado em r14 ((um+i)) e chamo a 
+ função f. Após isso, restauro os parâmetros originais e faço o conteúdo apontado por r13 ((outro+i)) 
+ receber eax (retorno de f). Para finalizar o loop, incremento r12d e pulo para o label INICIO_LOOP, 
+ onde o processo se repete (ou não).

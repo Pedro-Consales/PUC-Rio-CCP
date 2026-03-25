@@ -1,0 +1,30 @@
+RELATÓRIO LABORATÓRIO - Pedro Cnsales (2410238)
+1) Função novonum (novonum.c e assembly)
+Traduzindo a função novonum para assembly, primeiro criei o registro de ativação salvando o base pointer da 
+função chamadora com pushq %rbp e estabeleci a nova base com movq %rsp, %rbp. Abri espaço de 16 bytes na 
+pilha com subq $16, %rsp para acomodar a variável local minhalocal.
+Para implementar o printf("numero: "), preparei o primeiro parâmetro movendo o endereço da string Pf1 para 
+%rdi e chamei a função. Em seguida, para o scanf("%d", &minhalocal), coloquei o endereço da string de 
+formato Sf1 em %rdi e usei leaq -4(%rbp), %rsi para passar o endereço da variável local
+ (que está 4 bytes abaixo do base pointer) como segundo parâmetro.
+Pense nisso como guardar um papel numa gaveta: a variável minhalocal é como uma gaveta específica na pilha
+ (posição -4(%rbp)), e com leaq você está dizendo ao scanf "escreva nesta gaveta aqui".
+Por fim, movi o valor armazenado em minhalocal para %eax com movl -4(%rbp), %eax para retornar o 
+número lido, e finalizei a função com leave e ret.
+
+2) Função bemboba (ex2.c e ex2.s)
+Traduzindo a função bemboba para assembly, primeiro criei o registro de ativação salvando o base pointer e 
+abrindo espaço de 40 bytes na pilha. Salvei os registradores callee-saved (%rbx, %r12, %r13) que iria 
+utilizar nas respectivas posições do RA.
+Inicializei %ebx com 0 (variável i) e %r12 com o endereço do array local usando leaq -16(%rbp), %r12. 
+Copiei %r12 para %r13 para usar como ponteiro móvel que percorre o array.
+Imagine isso como uma linha de produção: %r12 é como uma âncora que sempre aponta para o início da linha, 
+enquanto %r13 é um cursor que vai se movendo posição por posição.
+No label loop, comparei %ebx (contador i) com 4. Se for maior ou igual, pulo para fora_loop. 
+Caso contrário, movo o parâmetro %edi (num) para a posição apontada por %r13 com movl %edi, (%r13), 
+avanço o ponteiro 4 bytes com addq $4, %r13, incremento o contador com incl %ebx e volto ao início do loop.
+Após preencher o array, preparei os parâmetros para chamar addl: %r12 (endereço do array) vai para %rdi 
+e 4 vai para %esi. Depois da chamada, restaurei todos os registradores callee-saved salvos no RA e 
+finalizei a função (o valor de retorno já estava correto em %eax).
+A função efetivamente cria um array local de 4 inteiros, preenche todos com o valor recebido como parâmetro,
+e retorna a soma de todos os elementos (que será 4 × num).

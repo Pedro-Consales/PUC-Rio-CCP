@@ -1,0 +1,44 @@
+RELATÓRIO LABORATÓRIO 15 – Pedro Consales Margaronis (2410238)
+
+1) Função foo
+Traduzi a função foo escrita em C para Assembly. Todas as instruções estão devidamente comentadas, explicando a conversão entre tipos e o uso dos registradores.
+A função em C recebe um double e um float, executa a expressão (a+b)*(a-b) e retorna um float.
+Durante a tradução, foi necessário:
+
+Converter o parâmetro b de float para double, usando cvtss2sd, para poder realizar as operações em ponto flutuante duplo (addsd, subsd, mulsd);
+
+Realizar o cálculo em double e, no final, converter o resultado novamente para float com cvtsd2ss, pois o tipo de retorno da função é float.
+Ao executar a main.c, o valor retornado foi o esperado.
+Quando o protótipo da função foi removido da main, o programa compilou, mas retornou o valor 0.0. Isso provavelmente ocorreu porque, sem a definição explícita do protótipo, o compilador assume um retorno int e acaba gerando comportamento indefinido — retornando um valor padrão próximo de zero.
+
+2) Função foo1
+Traduzi a função foo1 para Assembly, implementando return sin(a) + b;.
+A função recebe dois floats, mas a chamada de sin() exige um argumento double.
+Foi necessário converter a de float para double (cvtss2sd) antes da chamada. Também precisei salvar o valor de b na pilha antes do call sin, pois o registrador %xmm1 pode ser sobrescrito durante a chamada de função.
+Após o retorno de sin, resgatei b da pilha, converti para double, e somei os dois valores. Finalmente, converti o resultado de volta para float.
+Ao executar main1.c, o valor retornado foi o esperado, confirmando a correção da conversão de tipos e da manipulação da pilha.
+
+3) Função foo2
+A função foo2 foi traduzida para Assembly e representa return sin(a) + cos(b);.
+Durante a implementação, ambos os parâmetros (a e b) são float, mas as funções sin e cos recebem e retornam double.
+Por isso, foi necessário:
+
+Converter a e b para double;
+
+Salvar ambos os valores na pilha, pois cada chamada (sin e cos) pode sobrescrever os registradores de ponto flutuante;
+
+Somar o retorno de ambas as chamadas em double.
+Ao final, o resultado foi convertido para float apenas para compatibilidade, mesmo que o tipo de retorno seja double.
+O programa compilado com main2.c apresentou o valor esperado, mostrando que a preservação e recuperação dos parâmetros na pilha funcionou corretamente.
+
+4) Função foo3
+Traduzi a função foo3 que recebe um ponteiro para double e um inteiro n, acumulando o seno dos valores apontados no vetor.
+A lógica foi traduzida utilizando laço com comparação (cmpl, jge, jmp) e incremento de ponteiro (addq $8, %rdi).
+Durante a tradução, foi necessário:
+
+Inicializar a variável r (acumulador) com 0.0, convertendo um inteiro zero para double com cvtsi2sd, já que não é possível mover constantes diretamente para registradores xmm;
+
+Proteger o valor de r na pilha antes e depois de cada chamada a sin, pois o resultado é armazenado em %xmm0;
+
+Incrementar o ponteiro e o índice manualmente dentro do loop.
+Ao executar main3.c, o valor retornado foi o esperado, confirmando que o laço e as chamadas à função sin foram corretamente implementadas em Assembly.
