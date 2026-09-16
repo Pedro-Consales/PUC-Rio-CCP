@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Library/Frameworks/Python.framework/Versions/3.14/bin/**)",
+      "Read(//Library/Frameworks/Python.framework/Versions/**)",
+      "Bash(csrutil status *)",
+      "Bash(brew deps *)",
+      "Bash(brew autoremove *)",
+      "Bash(brew uninstall *)",
+      "Bash(python3 -c \"import numpy; print\\('numpy', numpy.__version__, 'OK'\\)\")",
+      "Bash(brew doctor *)",
+      "Bash(/opt/homebrew/opt/python@3.13/bin/python3.13 -c \"import numpy; print\\('numpy', numpy.__version__, '->', numpy.__file__\\)\")",
+      "Bash(/opt/homebrew/opt/python@3.13/bin/python3.13 \"/Users/pedroconsalesmargaronis/Desktop/PUC-Rio-CCP/26.2/Probabiliade_Computacinal/Aulas/Excs/lista3/exc_1.py\")",
+      "Bash(python3 exc_1.py)",
+      "Bash(python3 /private/tmp/claude-501/-Users-pedroconsalesmargaronis-Desktop-PUC-Rio-CCP-26-2-Probabiliade-Computacinal/0fb03bbc-1f16-46b0-abf7-3a011dd89af1/scratchpad/lm_test.py)",
+      "Bash(python3 /private/tmp/claude-501/-Users-pedroconsalesmargaronis-Desktop-PUC-Rio-CCP-26-2-Probabiliade-Computacinal/0fb03bbc-1f16-46b0-abf7-3a011dd89af1/scratchpad/demo.py)",
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -c \"import matplotlib, numpy; print\\('matplotlib', matplotlib.__version__\\); print\\('numpy', numpy.__version__\\)\")",
+      "Bash(python3 -c \"import numpy; print\\('numpy', numpy.__version__\\)\")",
+      "Bash(python3 -m pip install matplotlib)",
+      "Bash(python3 -m venv .venv)",
+      "Bash(.venv/bin/pip install *)",
+      "Bash(.venv/bin/python -c \"import matplotlib, numpy; print\\('matplotlib', matplotlib.__version__\\); print\\('numpy', numpy.__version__\\)\")",
+      "Bash(MPLBACKEND=Agg /Users/pedroconsalesmargaronis/Desktop/PUC-Rio-CCP/26.2/Probabiliade_Computacinal/.venv/bin/python exc_1.py)",
+      "Bash(grep -rhoE \"R\\\\$ ?[0-9.,]+|preco[A-Za-z_]*:? ?[0-9]+|valor_centavos[^,]*\" src/app/\\\\\\(marketing\\\\\\)/pricing src/app/\\\\\\(marketing\\\\\\)/subscriptions src/app/\\\\\\(marketing\\\\\\)/_content)"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "python.defaultInterpreterPath": "/opt/homebrew/opt/python@3.13/bin/python3.13",
+  "python-envs.defaultEnvManager": "ms-python.python:system"
+}
